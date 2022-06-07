@@ -17,7 +17,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               image: AssetImage('lib/assets/images/onboarding_background.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                  Color.fromRGBO(250, 74, 12, 1).withOpacity(0.5),
+                  Theme.of(context).colorScheme.secondary.withOpacity(0.5),
                   BlendMode.darken),
             ),
           ),
@@ -50,7 +50,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         style: TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Theme.of(context).primaryColor,
                           height: 1.1,
                         ),
                       ),
@@ -58,7 +58,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         "Get Your meals delivered Fresh, Hot and Ready to eat whenever you need it.",
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.white,
+                          color: Theme.of(context).primaryColor,
                           height: 1.5,
                         ),
                       ),
@@ -81,7 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             color: Colors.white,
                             height: 70,
                             minWidth: 290,
-                            textColor: Colors.deepOrange[700],
+                            textColor: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                       ),

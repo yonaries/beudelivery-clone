@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:userapp/screens/onboarding.dart';
+import 'package:userapp/screens/splash.dart';
 
 import 'firebase_options.dart';
 
@@ -26,9 +27,21 @@ class MyApp extends StatelessWidget {
           ThemeData.light().textTheme,
         ),
         primaryColor: Colors.white,
-        errorColor: Color.fromRGBO(255, 43, 43, 1),
+        colorScheme: ColorScheme(
+          primary: Colors.white,
+          onPrimary: Colors.black,
+          secondary: Color.fromRGBO(250, 74, 12, 1),
+          onSecondary: Colors.black,
+          surface: Colors.white,
+          onSurface: Colors.black,
+          background: Colors.white,
+          onBackground: Colors.black,
+          error: Color.fromRGBO(255, 43, 43, 1),
+          onError: Colors.black,
+          brightness: Brightness.light,
+        ),
       ),
-      home: OnboardingScreen(),
+      home: SplashScreen(),
     );
   }
 }
