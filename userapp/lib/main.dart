@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:userapp/screens/onboarding.dart';
+import 'package:userapp/screens/splash.dart';
 
 import 'firebase_options.dart';
 
@@ -15,29 +18,30 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          ThemeData.light().textTheme,
+        ),
+        primaryColor: Colors.white,
+        colorScheme: ColorScheme(
+          primary: Colors.white,
+          onPrimary: Colors.black,
+          secondary: Color.fromRGBO(250, 74, 12, 1),
+          onSecondary: Colors.black,
+          surface: Colors.white,
+          onSurface: Colors.black,
+          background: Colors.white,
+          onBackground: Colors.black,
+          error: Color.fromRGBO(255, 43, 43, 1),
+          onError: Colors.black,
+          brightness: Brightness.light,
+        ),
       ),
-      home: const MainApp(),
+      home: SplashScreen(),
     );
-  }
-}
-
-class MainApp extends StatefulWidget {
-  const MainApp({Key? key}) : super(key: key);
-
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
