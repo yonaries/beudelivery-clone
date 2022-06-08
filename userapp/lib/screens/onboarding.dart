@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -14,7 +14,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('lib/assets/images/onboarding_background.jpg'),
+              image: const AssetImage(
+                  'lib/assets/images/onboarding_background.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Theme.of(context).colorScheme.secondary.withOpacity(0.5),
@@ -22,7 +23,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.center,
                 end: Alignment.bottomCenter,
@@ -62,7 +63,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           height: 1.5,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Container(
@@ -71,17 +72,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           borderRadius: BorderRadius.circular(30),
                           child: MaterialButton(
                             onPressed: () {},
-                            child: Text(
+                            color: Colors.white,
+                            height: 70,
+                            minWidth: 290,
+                            textColor: Theme.of(context).colorScheme.secondary,
+                            child: const Text(
                               "Get Started",
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            color: Colors.white,
-                            height: 70,
-                            minWidth: 290,
-                            textColor: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                       ),

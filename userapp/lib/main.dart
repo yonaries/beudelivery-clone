@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           ThemeData.light().textTheme,
         ),
         primaryColor: Colors.white,
-        colorScheme: ColorScheme(
+        colorScheme: const ColorScheme(
           primary: Colors.white,
           onPrimary: Colors.black,
           secondary: Color.fromRGBO(250, 74, 12, 1),
