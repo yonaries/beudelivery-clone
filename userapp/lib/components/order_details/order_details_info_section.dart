@@ -22,7 +22,7 @@ class OrderDetailsInfoSection extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Order ID
-                        Text(
+                        const Text(
                           "#59951599559",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class OrderDetailsInfoSection extends StatelessWidget {
               ),
 
               // Delivery Address
-              Text(
+              const Text(
                 "Delivered to",
                 style: TextStyle(
                   color: Colors.grey,
@@ -64,7 +64,7 @@ class OrderDetailsInfoSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 "figa, wereda 08 block 7",
                 style: TextStyle(
                   fontSize: 15,
@@ -80,7 +80,7 @@ class OrderDetailsInfoSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text(
                 "Payment Method",
                 style: TextStyle(

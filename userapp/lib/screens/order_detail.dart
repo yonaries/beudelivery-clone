@@ -5,7 +5,7 @@ import 'package:userapp/components/order_details/order_details_info_section.dart
 import 'package:userapp/screens/splash.dart';
 
 class OrderDetailScreen extends StatefulWidget {
-  OrderDetailScreen({Key? key}) : super(key: key);
+  const OrderDetailScreen({Key? key}) : super(key: key);
 
   @override
   State<OrderDetailScreen> createState() => _OrderDetailScreenState();
@@ -21,7 +21,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
           onTap: () {
             // Need change when homepage is done
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => SplashScreen()));
+                MaterialPageRoute(builder: (context) => const SplashScreen()));
           },
           child: Icon(
             Icons.arrow_back_ios_outlined,
@@ -46,14 +46,14 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
 
               // Delivery and payment information
-              OrderDetailsInfoSection(),
+              const OrderDetailsInfoSection(),
 
-              Divider(
+              const Divider(
                 thickness: 3,
               ),
 
@@ -62,10 +62,10 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
               Container(
                 height: 51 * 3,
                 child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return OrderDetailOrderComponent(
+                    return const OrderDetailOrderComponent(
                       foodName: "Boss Special Burger",
                       quantity: 2,
                       foodType: "Double",
@@ -74,17 +74,17 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                   },
                 ),
               ),
-              Divider(
+              const Divider(
                 thickness: 3,
               ),
 
               // Total section
-              OrderDetailTotalSection(
+              const OrderDetailTotalSection(
                 itemTotal: 1200,
                 deliveryFee: 30,
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
@@ -94,13 +94,13 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                   // Do Sth
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
                   alignment: Alignment.center,
                   height: 60,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [

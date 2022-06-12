@@ -6,11 +6,12 @@ class OrderDetailOrderComponent extends StatelessWidget {
   final int quantity;
   final double price;
   const OrderDetailOrderComponent({
+    Key? key,
     required this.foodName,
     required this.foodType,
     required this.quantity,
     required this.price,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class OrderDetailOrderComponent extends StatelessWidget {
               // food name and quantity
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                     fontSize: 17,
@@ -45,13 +46,13 @@ class OrderDetailOrderComponent extends StatelessWidget {
               // Price
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                     fontSize: 16,
                   ),
                   children: [
-                    TextSpan(text: "Br "),
+                    const TextSpan(text: "Br "),
                     TextSpan(
                       text: "$price",
                       style: TextStyle(
@@ -67,7 +68,7 @@ class OrderDetailOrderComponent extends StatelessWidget {
           // Food Size
           Text(
             foodType,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
               fontWeight: FontWeight.w700,
             ),

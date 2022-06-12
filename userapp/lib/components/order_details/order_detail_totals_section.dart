@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class OrderDetailTotalSection extends StatelessWidget {
   final double deliveryFee;
   final double itemTotal;
-  OrderDetailTotalSection({
+  const OrderDetailTotalSection({
     Key? key,
     required this.itemTotal,
     required this.deliveryFee,
@@ -21,7 +21,7 @@ class OrderDetailTotalSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Item Total",
                 style: TextStyle(
                   color: Colors.black,
@@ -30,12 +30,12 @@ class OrderDetailTotalSection extends StatelessWidget {
               ),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                   ),
                   children: [
-                    TextSpan(text: "Br "),
+                    const TextSpan(text: "Br "),
                     TextSpan(
                       text: "$itemTotal",
                       style: TextStyle(
@@ -55,7 +55,7 @@ class OrderDetailTotalSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Delivery Fee",
                 style: TextStyle(
                   color: Colors.black,
@@ -64,12 +64,12 @@ class OrderDetailTotalSection extends StatelessWidget {
               ),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 17,
                   ),
                   children: [
-                    TextSpan(text: "Br "),
+                    const TextSpan(text: "Br "),
                     TextSpan(
                       text: "$deliveryFee",
                       style: TextStyle(
@@ -89,7 +89,7 @@ class OrderDetailTotalSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Paid",
                 style: TextStyle(
                   color: Colors.black,
@@ -99,13 +99,13 @@ class OrderDetailTotalSection extends StatelessWidget {
               ),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   children: [
-                    TextSpan(text: "Br "),
+                    const TextSpan(text: "Br "),
                     TextSpan(
                       text: "$totalPaid",
                       style: TextStyle(
