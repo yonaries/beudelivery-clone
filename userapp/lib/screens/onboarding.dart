@@ -80,7 +80,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             },
                             color: Colors.white,
                             height: 70,
-                            minWidth: 290,
+                            minWidth: 300,
                             textColor: Theme.of(context).colorScheme.secondary,
                             child: const Text(
                               "Get Started",

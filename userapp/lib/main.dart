@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:userapp/screens/onboarding.dart';
-
+import 'package:userapp/screens/order_detail.dart';
 
 import 'firebase_options.dart';
 
