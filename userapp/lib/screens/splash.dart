@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
             "lib/assets/images/beu_logo_with_text.png",
             height: 250.0,
           ),
-          SizedBox(
+          const SizedBox(
             height: 70.0,
           ),
           SpinKitRing(
