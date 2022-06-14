@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:userapp/screens/navbar.dart';
+import 'package:userapp/screens/onboarding.dart';
 
 import 'firebase_options.dart';
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const Navbar(),
+      home: const OnboardingScreen(),
     );
   }
 }

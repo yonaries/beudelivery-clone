@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:userapp/screens/splash.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -71,10 +72,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),
                           child: MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SplashScreen()));
+                            },
                             color: Colors.white,
                             height: 70,
-                            minWidth: 290,
+                            minWidth: 300,
                             textColor: Theme.of(context).colorScheme.secondary,
                             child: const Text(
                               "Get Started",
