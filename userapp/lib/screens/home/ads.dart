@@ -11,10 +11,8 @@ final Set<String> ads = {
 final List<bool> isSelectedAd =
     ads.map((e) => e == ads.last ? true : false).toList();
 
-//* Controllers
 //ads page controller
 final PageController _adsController = PageController(initialPage: 0);
-//final _textController = TextEditingController();
 
 Container adBanner(double currentHeight) {
   return Container(

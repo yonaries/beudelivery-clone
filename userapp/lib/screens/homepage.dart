@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:userapp/screens/home/ads.dart';
 import 'package:userapp/screens/home/searchbar.dart';
+import 'package:userapp/screens/home/tabs/foods.dart';
 import 'package:userapp/screens/home/tabs/hometabs.dart';
 
 class Homepage extends StatefulWidget {
@@ -45,20 +46,33 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
       ),
       body: DefaultTabController(
         length: 2,
-        child: Column(
-          children: [
-            searchBar(currentWidth),
-            adBanner(currentHeight),
-            tabBars(),
-            const Expanded(
+        child: SizedBox(
+          width: double.maxFinite,
+          child: NestedScrollView(
+            floatHeaderSlivers: true,
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      searchBar(currentWidth),
+                      adBanner(currentHeight),
+                      tabBars(),
+                    ],
+                  ),
+                )
+              ];
+            },
+            body: Expanded(
               child: TabBarView(
                 children: [
-                  Text("tab 1"),
-                  Text("tab 2"),
+                  foodsContainer(),
+                  const Text("tab 2"),
                 ],
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
