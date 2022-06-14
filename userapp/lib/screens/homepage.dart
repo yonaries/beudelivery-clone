@@ -11,12 +11,14 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // current screen ratio
     final currentHeight = MediaQuery.of(context).size.height;
     final currentWidth = MediaQuery.of(context).size.width;
+    //controllers
+    final TabController _tabController = TabController(length: 2, vsync: this);
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
@@ -41,12 +43,21 @@ class _HomepageState extends State<Homepage> {
         title:
             SizedBox(child: Image.asset("lib/assets/images/beudelivery.png")),
       ),
-      body: SingleChildScrollView(
+      body: DefaultTabController(
+        length: 2,
         child: Column(
           children: [
             searchBar(currentWidth),
             adBanner(currentHeight),
-            //HomeTabViews(currentWidth: currentWidth),
+            tabBars(),
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  Text("tab 1"),
+                  Text("tab 2"),
+                ],
+              ),
+            )
           ],
         ),
       ),

@@ -36,7 +36,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
 
-            // /////////
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Align(
