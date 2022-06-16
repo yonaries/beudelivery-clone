@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 
-final Set<String> specials = {
-  "lib/assets/special/chillyBurger.jpg",
-  "lib/assets/special/kitfo.png",
-  "lib/assets/special/boss-coca.jpg",
-  "lib/assets/special/Dulet.png",
-  "lib/assets/special/devine.webp",
-};
+import '../foods.dart';
 
 Container specialOffers(context) {
   return Container(
     margin: const EdgeInsets.only(top: 10),
     padding: const EdgeInsets.symmetric(horizontal: 5),
-    height: 260,
+    height: 265,
     color: Colors.white,
     child: Column(
       children: [
@@ -52,10 +46,11 @@ Container specialOffers(context) {
                       child: SizedBox(
                         width: 260,
                         height: 160,
-                        child: InkWell(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Material(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Material(
+                            child: InkWell(
+                              onTap: () {},
                               child: Ink.image(
                                 fit: BoxFit.cover,
                                 image: AssetImage(specials.elementAt(index)),

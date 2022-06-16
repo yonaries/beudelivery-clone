@@ -66,7 +66,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
             },
             body: TabBarView(
               children: [
-                foodsContainer(context, currentWidth),
+                foodsContainer(context),
                 const Text("tab 2"),
               ],
             ),

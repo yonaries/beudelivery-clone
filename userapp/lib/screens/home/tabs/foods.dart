@@ -13,7 +13,15 @@ final Set<String> localFavorites = {
   "lib/assets/items/sambusa.jpg",
 };
 
-SizedBox foodsContainer(context, currentWidth) {
+final Set<String> specials = {
+  "lib/assets/special/chillyBurger.jpg",
+  "lib/assets/special/kitfo.png",
+  "lib/assets/special/boss-coca.jpg",
+  "lib/assets/special/Dulet.png",
+  "lib/assets/special/devine.webp",
+};
+
+SizedBox foodsContainer(context) {
   return SizedBox(
     height: double.maxFinite,
     child: Column(

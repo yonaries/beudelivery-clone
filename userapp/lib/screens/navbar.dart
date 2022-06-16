@@ -40,7 +40,7 @@ class _NavbarState extends State<Navbar> {
         child: Container(
           height: 60,
           width: currentWidth,
-          margin: const EdgeInsets.only(bottom: 30),
+          margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.15),

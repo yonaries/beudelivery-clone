@@ -28,10 +28,11 @@ class _LocalFavoritesState extends State<LocalFavorites> {
             children: [
               SizedBox(
                 height: currentWidth / 2 * 0.85,
-                child: InkWell(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Material(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Material(
+                    child: InkWell(
+                      onTap: () {},
                       child: Ink.image(
                         fit: BoxFit.cover,
                         image: AssetImage(localFavorites.elementAt(index)),
