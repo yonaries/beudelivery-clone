@@ -64,13 +64,11 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                 )
               ];
             },
-            body: Expanded(
-              child: TabBarView(
-                children: [
-                  foodsContainer(),
-                  const Text("tab 2"),
-                ],
-              ),
+            body: TabBarView(
+              children: [
+                foodsContainer(context),
+                const Text("tab 2"),
+              ],
             ),
           ),
         ),
