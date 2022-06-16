@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:userapp/common_states.dart';
 import 'package:userapp/screens/home/ads.dart';
 import 'package:userapp/screens/home/searchbar.dart';
 import 'package:userapp/screens/home/tabs/foods.dart';
@@ -18,8 +20,6 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
     // current screen ratio
     final currentHeight = MediaQuery.of(context).size.height;
     final currentWidth = MediaQuery.of(context).size.width;
-    //controllers
-    final TabController _tabController = TabController(length: 2, vsync: this);
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
@@ -66,7 +66,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
             },
             body: TabBarView(
               children: [
-                foodsContainer(context),
+                foodsContainer(context, currentWidth),
                 const Text("tab 2"),
               ],
             ),
