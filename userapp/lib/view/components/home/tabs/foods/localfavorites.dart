@@ -22,7 +22,7 @@ class _LocalFavoritesState extends State<LocalFavorites> {
             crossAxisCount: 2),
         itemCount: localFavorites.length,
         itemBuilder: (context, index) => Container(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,15 +35,18 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                       onTap: () {},
                       child: Ink.image(
                         fit: BoxFit.cover,
-                        image: AssetImage(localFavorites.elementAt(index)),
+                        image: AssetImage(localFavorites[index].image),
                       ),
                     ),
                   ),
                 ),
               ),
-              const Text(
-                "Boss Special Cheese",
-                style: TextStyle(fontWeight: FontWeight.bold),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                localFavorites[index].itemName,
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,22 +58,23 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                       color: const Color.fromARGB(255, 255, 215, 178),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Text(
-                      "Burger",
-                      style: TextStyle(fontSize: 12, color: Colors.deepOrange),
+                    child: Text(
+                      localFavorites[index].itemTag,
+                      style: const TextStyle(
+                          fontSize: 12, color: Colors.deepOrange),
                     ),
                   ),
                   Row(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         "Br",
                         style: TextStyle(
                             color: Colors.deepOrange,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "245",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        localFavorites[index].itemprice.toString(),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   )

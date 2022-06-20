@@ -22,11 +22,11 @@ Container adBanner(double currentHeight) {
       controller: _adsController,
       itemCount: ads.length,
       itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {},
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Material(
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Material(
+            child: InkWell(
+              onTap: () {},
               child: Ink.image(
                 fit: BoxFit.cover,
                 image: AssetImage(ads.elementAt(index)),

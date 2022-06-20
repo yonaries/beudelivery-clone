@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:userapp/screens/homepage.dart';
+import 'package:userapp/view/screens/homepage.dart';
 
 //* states
 int currentPageIndex = 0;
@@ -40,7 +40,7 @@ class _NavbarState extends State<Navbar> {
         child: Container(
           height: 60,
           width: currentWidth,
-          margin: const EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(bottom: 25),
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.15),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:userapp/screens/splash.dart';
+import 'package:userapp/view/screens/splash.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -35,7 +35,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
             ),
-
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Align(
@@ -75,7 +74,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const SplashScreen()));
+                                      builder: (context) =>
+                                          const SplashScreen()));
                             },
                             color: Colors.white,
                             height: 70,

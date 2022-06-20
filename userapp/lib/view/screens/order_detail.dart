@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:userapp/components/order_details/order_detail_orders_component.dart';
-import 'package:userapp/components/order_details/order_detail_totals_section.dart';
-import 'package:userapp/components/order_details/order_details_info_section.dart';
-import 'package:userapp/screens/splash.dart';
+import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
+import 'package:userapp/view/components/order_details/order_detail_totals_section.dart';
+import 'package:userapp/view/components/order_details/order_details_info_section.dart';
+import 'package:userapp/view/screens/splash.dart';
 
 class OrderDetailScreen extends StatefulWidget {
   const OrderDetailScreen({Key? key}) : super(key: key);

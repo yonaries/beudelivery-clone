@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:userapp/common_states.dart';
-import 'package:userapp/screens/home/ads.dart';
-import 'package:userapp/screens/home/searchbar.dart';
-import 'package:userapp/screens/home/tabs/foods.dart';
-import 'package:userapp/screens/home/tabs/hometabs.dart';
+import 'package:userapp/view/components/home/ads.dart';
+import 'package:userapp/view/components/home/searchbar.dart';
+import 'package:userapp/view/components/home/tabs/foods.dart';
+import 'package:userapp/view/components/home/hometabs.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -46,30 +45,26 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
       ),
       body: DefaultTabController(
         length: 2,
-        child: SizedBox(
-          width: double.maxFinite,
-          child: NestedScrollView(
-            floatHeaderSlivers: true,
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      searchBar(currentWidth),
-                      adBanner(currentHeight),
-                      tabBars(),
-                    ],
-                  ),
-                )
-              ];
-            },
-            body: TabBarView(
-              children: [
-                foodsContainer(context),
-                const Text("tab 2"),
-              ],
-            ),
+        child: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    searchBar(currentWidth),
+                    adBanner(currentHeight),
+                    tabBars(),
+                  ],
+                ),
+              )
+            ];
+          },
+          body: TabBarView(
+            children: [
+              foodsContainer(context),
+              const Text("tab 2"),
+            ],
           ),
         ),
       ),

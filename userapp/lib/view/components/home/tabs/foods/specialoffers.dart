@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../foods.dart';
 
 Container specialOffers(context) {
   return Container(
-    margin: const EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10, bottom: 10),
     padding: const EdgeInsets.symmetric(horizontal: 5),
     height: 265,
     color: Colors.white,
@@ -50,10 +52,13 @@ Container specialOffers(context) {
                           borderRadius: BorderRadius.circular(15),
                           child: Material(
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                log(specials.length.toString());
+                              },
                               child: Ink.image(
                                 fit: BoxFit.cover,
-                                image: AssetImage(specials.elementAt(index)),
+                                image: AssetImage(
+                                    specials[index].image.toString()),
                               ),
                             ),
                           ),
@@ -65,9 +70,9 @@ Container specialOffers(context) {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            "Boss Special Cheese",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          Text(
+                            specials[index].itemName.toString(),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,24 +85,24 @@ Container specialOffers(context) {
                                       const Color.fromARGB(255, 255, 215, 178),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: const Text(
-                                  "Burger",
-                                  style: TextStyle(
+                                child: Text(
+                                  specials[index].itemTag,
+                                  style: const TextStyle(
                                       fontSize: 12, color: Colors.deepOrange),
                                 ),
                               ),
                               Row(
-                                children: const [
-                                  Text(
+                                children: [
+                                  const Text(
                                     "Br",
                                     style: TextStyle(
                                         color: Colors.deepOrange,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "245",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    specials[index].itemprice.toString(),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               )
