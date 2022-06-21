@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:userapp/model/local_favorites_model.dart';
 import 'package:userapp/model/special_offers_dataModel.dart';
-
-import 'package:userapp/view/screens/home/tabs/foods/localfavorites.dart';
+import 'package:userapp/view/components/home/tabs/foods/localfavorites.dart';
 import 'foods/specialoffers.dart';
 
 final List<LocalFavoritesModel> localFavorites = [
