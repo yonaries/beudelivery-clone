@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:userapp/controller/food_detail/similar_foods_controller.dart';
+import 'package:userapp/view/components/common/bottom_nav_bar.dart';
 
 import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
 import 'package:userapp/view/components/food_datails/food_image.dart';
@@ -11,7 +14,7 @@ class FoodDetailScreen extends StatefulWidget {
 }
 
 class _FoodDetailScreenState extends State<FoodDetailScreen> {
-  int itemCount = 1;
+  int itemCount = 0;
   bool isFavorite = false;
   void plusAndMinusHandler(bool add) {
     if (add) {
@@ -34,9 +37,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // bottomNavigationBar: bottomNavBar(
+      //     pageChangeHandler: pageChangeHandler,
+      //     context: context,),
+      // );
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Image and Buttons
             foodDetailImageComponent(
               isFavorite: isFavorite,
               favoriteBtnHandler: favoriteBtnHandler,
@@ -151,27 +159,9 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                   const SizedBox(
                     height: 30,
                   ),
-                  // Similar Foods
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "Similar Foods",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "See all",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
 
-                  // Render list view of food component
+                  // Render list of similar food component
+                  similarFoodsContainer(context)
                 ],
               ),
             ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-SizedBox foodDetailImageComponent(
+Container foodDetailImageComponent(
     {required bool isFavorite, required Function favoriteBtnHandler}) {
-  return SizedBox(
+  return Container(
     height: 350,
+    color: Colors.black,
     child: Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
@@ -16,6 +17,27 @@ SizedBox foodDetailImageComponent(
           child: Image.asset(
             "lib/assets/images/food_sample.png",
             fit: BoxFit.cover,
+          ),
+        ),
+
+        // Back to home button
+        Positioned(
+          top: 0,
+          left: 20,
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.black,
+              ),
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: 20,
+                color: Colors.white,
+              ),
+            ),
           ),
         ),
 
