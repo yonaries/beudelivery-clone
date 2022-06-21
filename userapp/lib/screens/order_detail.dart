@@ -59,7 +59,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
 
               // Order listing
 
-              Container(
+              SizedBox(
                 height: 51 * 3,
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
