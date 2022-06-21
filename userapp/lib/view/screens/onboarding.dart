@@ -35,8 +35,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
             ),
-
-            // /////////
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Align(
@@ -76,7 +74,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const SplashScreen()));
+                                      builder: (context) =>
+                                          const SplashScreen()));
                             },
                             color: Colors.white,
                             height: 70,
