@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:userapp/components/order_details/order_detail_orders_component.dart';
 
-import '../components/food_datails/food_image.dart';
+import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
+import 'package:userapp/view/components/food_datails/food_image.dart';
 
 class FoodDetailScreen extends StatefulWidget {
   const FoodDetailScreen({Key? key}) : super(key: key);
@@ -129,18 +129,18 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                     children: const [
                       Text(
                         "Description",
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
-                       Text(
+                      Text(
                         "Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription",
                         textAlign: TextAlign.justify,
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
@@ -155,14 +155,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                       Text(
+                      Text(
                         "Similar Foods",
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                       Text(
+                      Text(
                         "See all",
                         style: TextStyle(
                           fontSize: 20,
