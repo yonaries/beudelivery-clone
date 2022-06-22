@@ -4,6 +4,8 @@ class SimilarFoodModel {
   double itemprice;
   String itemTag;
   String restaurant;
+  String description;
+  String itemSize;
 
   SimilarFoodModel({
     required this.image,
@@ -11,5 +13,7 @@ class SimilarFoodModel {
     required this.itemprice,
     required this.itemTag,
     required this.restaurant,
+    required this.description,
+    required this.itemSize,
   });
 }

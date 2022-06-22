@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:userapp/controller/food_detail/similar_foods_controller.dart';
+import 'package:userapp/view/screens/food_detail.dart';
 
 Container similarFoods(context) {
   return Container(
@@ -52,7 +51,16 @@ Container similarFoods(context) {
                           child: Material(
                             child: InkWell(
                               onTap: () {
-                                log(similarFoodList.length.toString());
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FoodDetailScreen(),
+                                    settings: RouteSettings(
+                                      arguments: similarFoodList[index],
+                                    ),
+                                  ),
+                                );
                               },
                               child: Ink.image(
                                 fit: BoxFit.cover,

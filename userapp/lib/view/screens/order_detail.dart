@@ -65,7 +65,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return const OrderDetailOrderComponent(
+                    return OrderDetailOrderComponent(
                       foodName: "Boss Special Burger",
                       quantity: 2,
                       foodType: "Double",

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:userapp/view/screens/food_detail.dart';
 
 import '../foods.dart';
 
@@ -53,7 +54,16 @@ Container specialOffers(context) {
                           child: Material(
                             child: InkWell(
                               onTap: () {
-                                log(specials.length.toString());
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FoodDetailScreen(),
+                                    settings: RouteSettings(
+                                      arguments: specials[index],
+                                    ),
+                                  ),
+                                );
                               },
                               child: Ink.image(
                                 fit: BoxFit.cover,

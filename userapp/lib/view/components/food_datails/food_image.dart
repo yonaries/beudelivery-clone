@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:userapp/view/screens/navbar.dart';
 
 Container foodDetailImageComponent(
-    {required bool isFavorite, required Function favoriteBtnHandler}) {
+    {required bool isFavorite,
+    required Function favoriteBtnHandler,
+    context,
+    required image}) {
   return Container(
     height: 350,
     color: Colors.black,
@@ -15,7 +19,7 @@ Container foodDetailImageComponent(
           left: 0,
           right: 0,
           child: Image.asset(
-            "lib/assets/images/food_sample.png",
+            image,
             fit: BoxFit.cover,
           ),
         ),
@@ -25,7 +29,14 @@ Container foodDetailImageComponent(
           top: 50,
           left: 20,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Navbar(),
+                ),
+              );
+            },
             child: Container(
               padding: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(

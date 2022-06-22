@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const FoodDetailScreen(),
+      home: const Navbar(),
     );
   }
 }

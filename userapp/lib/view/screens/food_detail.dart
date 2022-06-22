@@ -1,20 +1,32 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/controller/food_detail/similar_foods_controller.dart';
+import 'package:userapp/model/local_favorites_model.dart';
+import 'package:userapp/model/similar_food_model.dart';
+import 'package:userapp/model/special_offers_dataModel.dart';
 import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
 import 'package:userapp/view/components/food_datails/food_image.dart';
 
 class FoodDetailScreen extends StatefulWidget {
-  const FoodDetailScreen({Key? key}) : super(key: key);
+  const FoodDetailScreen({key}) : super(key: key);
 
   @override
   State<FoodDetailScreen> createState() => _FoodDetailScreenState();
 }
 
 class _FoodDetailScreenState extends State<FoodDetailScreen> {
+  String image = "";
+  String itemName = "";
+  double itemprice = 0;
+  String itemTag = "";
+  String itemSize = "";
+  String restaurant = "";
+  String description = "";
+
   int itemCount = 0;
   bool isFavorite = false;
   void plusAndMinusHandler(bool add) {
@@ -37,6 +49,31 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // recieving data from another page
+    final food = ModalRoute.of(context)!.settings.arguments;
+    if (food is SpecialOfferModel) {
+      image = food.image;
+      itemName = food.itemName;
+      itemprice = food.itemprice;
+      description = food.description;
+      restaurant = food.restaurant;
+      itemSize = food.itemSize;
+    } else if (food is LocalFavoritesModel) {
+      image = food.image;
+      itemName = food.itemName;
+      itemprice = food.itemprice;
+      description = food.description;
+      restaurant = food.restaurant;
+      itemSize = food.itemSize;
+    } else if (food is SimilarFoodModel) {
+      image = food.image;
+      itemName = food.itemName;
+      itemprice = food.itemprice;
+      description = food.description;
+      restaurant = food.restaurant;
+      itemSize = food.itemSize;
+    }
+
     //state
     int currentSelected =
         Provider.of<NavBarController>(context).currentPageIndex;
@@ -50,13 +87,13 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
             foodDetailImageComponent(
               isFavorite: isFavorite,
               favoriteBtnHandler: favoriteBtnHandler,
+              context: context,
+              image: image,
             ),
 
             const SizedBox(
               height: 50,
             ),
-
-            Text("$currentSelected"),
 
             //
             Padding(
@@ -65,18 +102,17 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // name and price
-                  const OrderDetailOrderComponent(
-                    foodName: "Chilly Cheese Burger",
-                    foodType: "Boss Size",
-                    quantity: 4,
-                    price: 700,
+                  OrderDetailOrderComponent(
+                    foodName: itemName,
+                    foodType: itemSize,
+                    price: itemprice,
                   ),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "From : Boss Burger",
+                        "From : $restaurant",
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.secondary,
                           fontSize: 18,
@@ -141,7 +177,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                         height: 10,
                       ),
                       Text(
-                        "Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription",
+                        "foodDescription",
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                           fontSize: 16,
