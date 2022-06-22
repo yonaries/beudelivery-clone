@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/navbar_provider.dart';
+import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/homepage.dart';
 
@@ -16,12 +16,6 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  void pageChangeHandler(index) {
-    setState(() {
-      currentPageIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     //state

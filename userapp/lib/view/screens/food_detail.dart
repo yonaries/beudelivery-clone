@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:userapp/controller/food_detail/similar_foods_controller.dart';
-import 'package:userapp/view/components/common/bottom_nav_bar.dart';
-
+import 'package:userapp/providers/navbar_provider.dart';
+import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
 import 'package:userapp/view/components/food_datails/food_image.dart';
 
@@ -36,11 +37,12 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //state
+    int currentSelected =
+        Provider.of<NavBarController>(context).currentPageIndex;
+
     return Scaffold(
-      // bottomNavigationBar: bottomNavBar(
-      //     pageChangeHandler: pageChangeHandler,
-      //     context: context,),
-      // );
+      bottomNavigationBar: const BottomNavBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -53,6 +55,8 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
             const SizedBox(
               height: 50,
             ),
+
+            Text("$currentSelected"),
 
             //
             Padding(
@@ -68,63 +72,54 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                     price: 700,
                   ),
 
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isFavorite = !isFavorite;
-                      });
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "From : Boss Burger",
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.secondary,
-                            fontSize: 18,
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "From : Boss Burger",
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.secondary,
+                          fontSize: 18,
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  plusAndMinusHandler(false);
-                                },
-                                child: Icon(
-                                  Icons.remove,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                plusAndMinusHandler(false);
+                              },
+                              child: Icon(
+                                Icons.remove,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
-                              Container(
-                                alignment: Alignment.center,
-                                width: 40,
-                                child: Text(
-                                  "$itemCount",
-                                  style: const TextStyle(fontSize: 20),
-                                ),
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              width: 40,
+                              child: Text(
+                                "$itemCount",
+                                style: const TextStyle(fontSize: 20),
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  plusAndMinusHandler(true);
-                                },
-                                child: Icon(
-                                  Icons.add,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                plusAndMinusHandler(true);
+                              },
+                              child: Icon(
+                                Icons.add,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
 
                   const SizedBox(
