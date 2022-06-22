@@ -6,6 +6,9 @@ import 'package:userapp/view/components/home/searchbar.dart';
 import 'package:userapp/view/components/home/tabs/foods.dart';
 import 'package:userapp/view/components/home/hometabs.dart';
 
+import '../components/appbar.dart';
+import '../components/home/tabs/restaurants.dart';
+
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
@@ -22,27 +25,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
-      appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: Color.fromRGBO(245, 245, 248, 1)),
-        elevation: 0,
-        centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.all(19.0),
-          child: Image.asset(
-            "lib/assets/icons/Vector.png",
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(17.0),
-            child: Image.asset("lib/assets/icons/bell.png"),
-          )
-        ],
-        title:
-            SizedBox(child: Image.asset("lib/assets/images/beudelivery.png")),
-      ),
+      appBar: topAppBar(),
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
@@ -63,7 +46,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
           body: TabBarView(
             children: [
               foodsContainer(context),
-              const Text("tab 2"),
+              const Restaurants(),
             ],
           ),
         ),

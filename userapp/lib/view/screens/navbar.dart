@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:userapp/view/components/common/bottom_nav_bar.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/navbar_provider.dart';
+import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/homepage.dart';
 
 //* states
-int currentPageIndex = 0;
-
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
 
@@ -23,6 +24,9 @@ class _NavbarState extends State<Navbar> {
 
   @override
   Widget build(BuildContext context) {
+    //state
+    int currentSelected =
+        Provider.of<NavBarController>(context).currentPageIndex;
     // app pages
     const pages = [
       Center(child: Homepage()),
@@ -31,12 +35,9 @@ class _NavbarState extends State<Navbar> {
       Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
     ];
     return Scaffold(
-      body: pages[currentPageIndex],
+      body: pages[currentSelected],
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
-      bottomNavigationBar: bottomNavBar(
-        pageChangeHandler: pageChangeHandler,
-        context: context,
-      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
