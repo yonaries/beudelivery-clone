@@ -1,6 +1,7 @@
+// ignore: todo
 //TODO To parse this JSON data, do
 //
-//     final itemsModel = itemsModelFromJson(jsonString);
+// final itemsModel = itemsModelFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -32,8 +33,12 @@ class Order {
     required this.customerName,
     required this.customerPhone,
     required this.paymentMethod,
-    required this.paid,
     required this.totalItem,
+    required this.promocode,
+    required this.coupon,
+    required this.discount,
+    required this.paid,
+    required this.newCoupon,
     required this.deliveryFee,
     required this.deliveryLocation,
     required this.orderDate,
@@ -51,8 +56,12 @@ class Order {
   String customerName;
   String customerPhone;
   String paymentMethod;
-  String paid;
   String totalItem;
+  String promocode;
+  String coupon;
+  String discount;
+  String paid;
+  String newCoupon;
   String deliveryFee;
   String deliveryLocation;
   String orderDate;
@@ -70,8 +79,12 @@ class Order {
         customerName: json["customerName"],
         customerPhone: json["customerPhone"],
         paymentMethod: json["paymentMethod"],
-        paid: json["paid"],
         totalItem: json["totalItem"],
+        promocode: json["promocode"],
+        coupon: json["coupon"],
+        discount: json["discount"],
+        paid: json["paid"],
+        newCoupon: json["newCoupon"],
         deliveryFee: json["deliveryFee"],
         deliveryLocation: json["deliveryLocation"],
         orderDate: json["orderDate"],
@@ -90,8 +103,12 @@ class Order {
         "customerName": customerName,
         "customerPhone": customerPhone,
         "paymentMethod": paymentMethod,
-        "paid": paid,
         "totalItem": totalItem,
+        "promocode": promocode,
+        "coupon": coupon,
+        "discount": discount,
+        "paid": paid,
+        "newCoupon": newCoupon,
         "deliveryFee": deliveryFee,
         "deliveryLocation": deliveryLocation,
         "orderDate": orderDate,
