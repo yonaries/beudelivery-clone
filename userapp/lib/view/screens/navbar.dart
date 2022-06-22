@@ -6,7 +6,6 @@ import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/homepage.dart';
 
 //* states
-
 class Navbar extends StatefulWidget {
   const Navbar({Key? key}) : super(key: key);
 

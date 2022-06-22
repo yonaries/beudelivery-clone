@@ -4,8 +4,10 @@ import 'package:userapp/view/components/home/tabs/foods.dart';
 buildRestaurants(index, currentWidth) {
   if (index < specials.length) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
       child: Container(
+        height: 100,
+        width: currentWidth,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -39,40 +41,79 @@ buildRestaurants(index, currentWidth) {
                 ),
               ),
               SizedBox(
-                width: currentWidth - 150,
+                width: currentWidth - 120,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const SizedBox(child: Text("Angla Burger")),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 1),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 255, 215, 178),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        specials[index].itemTag,
-                        style: const TextStyle(
-                            fontSize: 12, color: Colors.deepOrange),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: SizedBox(
+                        width: currentWidth - 120,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: currentWidth - 120,
+                              child: const Text(
+                                "Angla Burger",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: currentWidth - 120,
+                              child: Row(
+                                children: [
+                                  buildTags(index),
+                                  buildTags(index),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                          child: Row(
-                            children: const [
-                              Icon(
-                                Icons.location_on,
-                                color: Colors.redAccent,
-                                size: 15,
-                              ),
-                              Text("Piassa, Tewodros RA"),
-                            ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            height: 20,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.location_on,
+                                  color: Colors.redAccent,
+                                  size: 15,
+                                ),
+                                Text(
+                                  "Piassa, Tewodros RA",
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 20,
+                            child: Row(
+                              children: const [
+                                Text("3.5",
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                    )),
+                                Text("Km Away",
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -84,14 +125,35 @@ buildRestaurants(index, currentWidth) {
     );
   } else {
     return Container(
-        height: 40,
-        width: currentWidth * 0.1,
-        alignment: Alignment.center,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.deepOrange, Colors.amberAccent])),
-        child: const Text("Show All"));
+      height: 40,
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(
+          gradient:
+              LinearGradient(colors: [Colors.deepOrange, Colors.amberAccent])),
+      child: const Text(
+        "Show All",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
+}
+
+Container buildTags(index) {
+  return Container(
+    margin: const EdgeInsets.only(right: 8, top: 5),
+    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+    decoration: BoxDecoration(
+      color: const Color.fromARGB(255, 255, 215, 178),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Text(
+      specials[index].itemTag,
+      style: const TextStyle(fontSize: 12, color: Colors.deepOrange),
+    ),
+  );
 }
 
 class Restaurants extends StatelessWidget {

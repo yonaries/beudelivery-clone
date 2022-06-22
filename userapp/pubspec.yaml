@@ -66,6 +66,7 @@ flutter:
     - lib/assets/icons/
     - lib/assets/items/
     - lib/assets/special/
+    - lib/assets/restaurants/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
