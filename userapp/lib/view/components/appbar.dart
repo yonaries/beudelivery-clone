@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-AppBar topAppBar() {
+AppBar topAppBar(Widget appbarTitle) {
   return AppBar(
     backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
     systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Color.fromRGBO(245, 245, 248, 1)),
+      statusBarColor: Color.fromRGBO(245, 245, 248, 1),
+      statusBarIconBrightness: Brightness.dark,
+    ),
     elevation: 0,
     centerTitle: true,
     leading: Padding(
@@ -20,6 +22,6 @@ AppBar topAppBar() {
         child: Image.asset("lib/assets/icons/bell.png"),
       )
     ],
-    title: SizedBox(child: Image.asset("lib/assets/images/beudelivery.png")),
+    title: SizedBox(child: appbarTitle),
   );
 }

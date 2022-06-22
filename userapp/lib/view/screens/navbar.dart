@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:userapp/view/screens/order_history.dart';
 
 import '../../providers/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
@@ -21,9 +22,9 @@ class _NavbarState extends State<Navbar> {
         Provider.of<NavBarController>(context).currentPageIndex;
     // app pages
     const pages = [
-      Center(child: Homepage()),
+      Homepage(),
       Center(child: Text("Cart", style: TextStyle(fontSize: 20))),
-      Center(child: Text("Orders", style: TextStyle(fontSize: 20))),
+      OrderPage(),
       Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
     ];
     return Scaffold(
