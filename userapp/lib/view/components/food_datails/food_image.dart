@@ -22,7 +22,7 @@ Container foodDetailImageComponent(
 
         // Back to home button
         Positioned(
-          top: 0,
+          top: 50,
           left: 20,
           child: GestureDetector(
             onTap: () {},
