@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:userapp/controller/food_detail/similar_foods_controller.dart';
+import 'package:userapp/controller/similar_foods_controller.dart';
 import 'package:userapp/model/local_favorites_model.dart';
 import 'package:userapp/model/similar_food_model.dart';
 import 'package:userapp/model/special_offers_dataModel.dart';

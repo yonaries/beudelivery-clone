@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:userapp/controller/food_detail/similar_foods_controller.dart';
+import 'package:userapp/controller/similar_foods_controller.dart';
 import 'package:userapp/view/screens/food_detail.dart';
 
 Container similarFoods(context) {

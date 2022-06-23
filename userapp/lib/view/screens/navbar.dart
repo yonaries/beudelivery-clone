@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
+import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/homepage.dart';
 
 //* states
@@ -24,7 +25,7 @@ class _NavbarState extends State<Navbar> {
     // app pages
     const pages = [
       Center(child: Homepage()),
-      Center(child: Text("Cart", style: TextStyle(fontSize: 20))),
+      Center(child: BagScreen()),
       Center(child: Text("Orders", style: TextStyle(fontSize: 20))),
       Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
     ];

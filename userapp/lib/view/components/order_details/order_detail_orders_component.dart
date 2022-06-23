@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class OrderDetailOrderComponent extends StatelessWidget {
-  String foodName;
-  String foodType;
-  int? quantity;
-  double price;
-  OrderDetailOrderComponent({
+  final String foodName;
+  final String foodType;
+  final int? quantity;
+  final double price;
+  const OrderDetailOrderComponent({
     Key? key,
     required this.foodName,
     required this.foodType,

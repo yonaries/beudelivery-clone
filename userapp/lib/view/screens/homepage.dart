@@ -25,7 +25,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
-      appBar: topAppBar(),
+      appBar: topAppBar(titleImage: "lib/assets/images/beudelivery.png"),
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(

@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:userapp/view/screens/homepage.dart';
+import 'package:userapp/view/screens/navbar.dart';
 
 class NavBarController extends ChangeNotifier {
   int _currentPageIndex = 0;
@@ -9,6 +11,8 @@ class NavBarController extends ChangeNotifier {
 
   void changePage(page) {
     _currentPageIndex = page;
+    // Navigator.pushReplacement(
+    //     context, MaterialPageRoute(builder: (context) => const Navbar()));
     log(_currentPageIndex.toString());
     notifyListeners();
   }
