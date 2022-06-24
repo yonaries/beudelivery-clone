@@ -1,4 +1,4 @@
-import 'dart:developer';
+// ignore_for_file: unnecessary_const
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -36,13 +36,13 @@ class _BagItemState extends State<BagItem> {
   Widget build(BuildContext context) {
     int itemCount = widget.itemCount;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       padding: const EdgeInsets.symmetric(horizontal: 15),
       height: 110,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
+        boxShadow: const [
+           BoxShadow(
             color: Color.fromRGBO(204, 196, 196, 0.6),
             blurRadius: 4,
             spreadRadius: 1,
@@ -53,7 +53,7 @@ class _BagItemState extends State<BagItem> {
       child: Slidable(
         // slidable delete button
         endActionPane: ActionPane(
-          motion: ScrollMotion(),
+          motion: const ScrollMotion(),
           children: [
             SlidableAction(
               onPressed: (context) {
@@ -74,10 +74,10 @@ class _BagItemState extends State<BagItem> {
             Container(
               width: 110,
               height: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius:
-                    BorderRadius.horizontal(left: Radius.circular(12)),
+                    const BorderRadius.horizontal(left: const Radius.circular(12)),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
@@ -91,12 +91,12 @@ class _BagItemState extends State<BagItem> {
             // Right hand side texts
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius:
-                      BorderRadius.horizontal(right: Radius.circular(12)),
+                      const BorderRadius.horizontal(right: const Radius.circular(12)),
                   color: Colors.white,
                 ),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,7 +113,7 @@ class _BagItemState extends State<BagItem> {
                               flex: 2,
                               child: Text(
                                 widget.foodName,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -124,7 +124,7 @@ class _BagItemState extends State<BagItem> {
                               flex: 1,
                               child: Text(
                                 "Br ${widget.price}",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black45,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -135,7 +135,7 @@ class _BagItemState extends State<BagItem> {
                         ),
                         Text(
                           widget.foodSize,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black45,
                             fontSize: 14,
                           ),
@@ -150,7 +150,7 @@ class _BagItemState extends State<BagItem> {
                           flex: 2,
                           child: Text(
                             widget.restaurant,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.red,
                               fontSize: 14,
                             ),
@@ -171,7 +171,7 @@ class _BagItemState extends State<BagItem> {
                                 },
                                 child: Container(
                                   color: Colors.amber,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.remove,
                                     size: 20,
                                   ),
@@ -182,7 +182,7 @@ class _BagItemState extends State<BagItem> {
                                 child: Text(
                                   "$itemCount",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -200,7 +200,7 @@ class _BagItemState extends State<BagItem> {
                                 },
                                 child: Container(
                                   color: Colors.amber,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.add,
                                     size: 20,
                                   ),

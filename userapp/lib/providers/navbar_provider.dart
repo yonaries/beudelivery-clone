@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:userapp/view/screens/homepage.dart';
-import 'package:userapp/view/screens/navbar.dart';
 
 class NavBarController extends ChangeNotifier {
   int _currentPageIndex = 0;

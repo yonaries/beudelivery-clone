@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:userapp/view/components/home/ads.dart';
 import 'package:userapp/view/components/home/searchbar.dart';
 import 'package:userapp/view/components/home/tabs/foods.dart';
 import 'package:userapp/view/components/home/hometabs.dart';
-
-import '../components/appbar.dart';
-import '../components/home/tabs/restaurants.dart';
+import 'package:userapp/view/components/appbar.dart';
+import 'package:userapp/view/components/home/tabs/restaurants.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);

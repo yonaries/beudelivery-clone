@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/bag/bag_list_builder.dart';
-import 'package:userapp/view/screens/homepage.dart';
 
 List<CartItemsModel> cartList = [
   CartItemsModel(
@@ -43,7 +40,7 @@ Widget bagItemContainer(
   if (cartList.isNotEmpty) {
     return Stack(
       children: [
-        BagItemListBuilder(
+        bagItemListBuilder(
             context, cartItemIncrementDecrementHandler, removeCartItem),
         Positioned(
           bottom: 15,
@@ -65,14 +62,14 @@ Widget bagItemContainer(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset("lib/assets/icons/empty_bag_Image.png"),
-            Text(
+            const Text(
               "No Order Yet",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 28,
               ),
             ),
-            Text(
+            const Text(
               "Your bag is hungry",
               style: TextStyle(
                 color: Colors.grey,
@@ -121,7 +118,7 @@ InkWell startOrderingButton(
       child: Center(
         child: Text(
           buttonText,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,

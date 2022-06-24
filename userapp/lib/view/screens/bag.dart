@@ -1,9 +1,7 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:userapp/view/components/appbar.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
-import 'package:userapp/view/components/bag/bag_item.dart';
 
 class BagScreen extends StatefulWidget {
   const BagScreen({Key? key}) : super(key: key);

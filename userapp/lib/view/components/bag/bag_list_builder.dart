@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
 import 'package:userapp/view/components/bag/bag_item.dart';
 
-
-
-SizedBox BagItemListBuilder(context, cartItemIncrementDecrementHandler, removeCartItem) {
+SizedBox bagItemListBuilder(
+    context, cartItemIncrementDecrementHandler, removeCartItem) {
   return SizedBox(
     child: ListView.builder(
       itemCount: cartList.length,

@@ -43,7 +43,7 @@ Container foodDetailImageComponent(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.black,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_back_ios_new,
                 size: 20,
                 color: Colors.white,

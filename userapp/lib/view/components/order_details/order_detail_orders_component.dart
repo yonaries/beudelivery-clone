@@ -34,7 +34,7 @@ class OrderDetailOrderComponent extends StatelessWidget {
                   children: [
                     TextSpan(text: "$foodName "),
                     TextSpan(
-                      text: "${quantity != null ? "x$quantity" : ""}",
+                      text: quantity != null ? "x$quantity" : "",
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary,
                       ),
