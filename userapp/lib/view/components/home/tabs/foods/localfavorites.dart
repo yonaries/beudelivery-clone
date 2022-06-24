@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:userapp/view/screens/food_detail.dart';
 
 import '../foods.dart';
 
@@ -32,7 +33,17 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                   borderRadius: BorderRadius.circular(15),
                   child: Material(
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const FoodDetailScreen(),
+                            settings: RouteSettings(
+                              arguments: localFavorites[index],
+                            ),
+                          ),
+                        );
+                      },
                       child: Ink.image(
                         fit: BoxFit.cover,
                         image: AssetImage(localFavorites[index].image),

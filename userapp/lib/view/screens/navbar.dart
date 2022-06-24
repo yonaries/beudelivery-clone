@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/view/screens/order_history.dart';
 
-import '../../providers/navbar_provider.dart';
+import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
+import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/homepage.dart';
 
 //* states
@@ -23,7 +24,7 @@ class _NavbarState extends State<Navbar> {
     // app pages
     const pages = [
       Homepage(),
-      Center(child: Text("Cart", style: TextStyle(fontSize: 20))),
+      BagScreen(),
       OrderPage(),
       Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
     ];

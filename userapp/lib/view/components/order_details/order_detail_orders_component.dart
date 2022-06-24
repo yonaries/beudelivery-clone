@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class OrderDetailOrderComponent extends StatelessWidget {
   final String foodName;
   final String foodType;
-  final int quantity;
+  final int? quantity;
   final double price;
   const OrderDetailOrderComponent({
     Key? key,
     required this.foodName,
     required this.foodType,
-    required this.quantity,
+    this.quantity,
     required this.price,
   }) : super(key: key);
 
@@ -34,7 +34,7 @@ class OrderDetailOrderComponent extends StatelessWidget {
                   children: [
                     TextSpan(text: "$foodName "),
                     TextSpan(
-                      text: "x$quantity",
+                      text: quantity != null ? "x$quantity" : "",
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary,
                       ),

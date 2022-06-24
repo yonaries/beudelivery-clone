@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:userapp/controller/similar_foods_controller.dart';
 import 'package:userapp/view/screens/food_detail.dart';
 
-import '../foods.dart';
-
-Container specialOffers(context) {
+Container similarFoods(context) {
   return Container(
     margin: const EdgeInsets.only(top: 10, bottom: 10),
     padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -36,7 +35,7 @@ Container specialOffers(context) {
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: specials.length,
+            itemCount: similarFoodList.length,
             itemBuilder: (context, index) {
               return SizedBox(
                 width: 270,
@@ -58,7 +57,7 @@ Container specialOffers(context) {
                                     builder: (context) =>
                                         const FoodDetailScreen(),
                                     settings: RouteSettings(
-                                      arguments: specials[index],
+                                      arguments: similarFoodList[index],
                                     ),
                                   ),
                                 );
@@ -66,7 +65,7 @@ Container specialOffers(context) {
                               child: Ink.image(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
-                                    specials[index].image.toString()),
+                                    similarFoodList[index].image.toString()),
                               ),
                             ),
                           ),
@@ -79,7 +78,7 @@ Container specialOffers(context) {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            specials[index].itemName.toString(),
+                            similarFoodList[index].itemName.toString(),
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Row(
@@ -94,7 +93,7 @@ Container specialOffers(context) {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Text(
-                                  specials[index].itemTag,
+                                  similarFoodList[index].itemTag,
                                   style: const TextStyle(
                                       fontSize: 12, color: Colors.deepOrange),
                                 ),
@@ -108,7 +107,7 @@ Container specialOffers(context) {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    specials[index].itemprice.toString(),
+                                    similarFoodList[index].itemprice.toString(),
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold),
                                   ),

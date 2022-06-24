@@ -1,19 +1,17 @@
-class SpecialOfferModel {
+class CartItemsModel {
   String image;
   String itemName;
   double itemprice;
-  String itemTag;
   String restaurant;
-  String description;
   String itemSize;
+  int itemCount;
 
-  SpecialOfferModel({
+  CartItemsModel({
     required this.image,
     required this.itemName,
     required this.itemprice,
-    required this.itemTag,
     required this.restaurant,
-    required this.description,
     required this.itemSize,
+    required this.itemCount,
   });
 }

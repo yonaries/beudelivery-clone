@@ -1,4 +1,4 @@
-class SpecialOfferModel {
+class SimilarFoodModel {
   String image;
   String itemName;
   double itemprice;
@@ -7,7 +7,7 @@ class SpecialOfferModel {
   String description;
   String itemSize;
 
-  SpecialOfferModel({
+  SimilarFoodModel({
     required this.image,
     required this.itemName,
     required this.itemprice,
