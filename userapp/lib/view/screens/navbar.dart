@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/view/screens/order_history.dart';
 
-import 'package:userapp/providers/navbar_provider.dart';
+import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/homepage.dart';
