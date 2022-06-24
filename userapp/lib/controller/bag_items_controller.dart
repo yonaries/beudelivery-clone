@@ -4,35 +4,11 @@ import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/bag/bag_list_builder.dart';
 
-List<CartItemsModel> cartList = [
-  CartItemsModel(
-    image: "lib/assets/special/chillyBurger.jpg",
-    itemName: "Boss Special Cheese",
-    itemprice: 375.0,
-    restaurant: "Boss Burger",
-    itemSize: 'small',
-    itemCount: 0,
-  ),
-  CartItemsModel(
-    image: "lib/assets/special/chillyBurger.jpg",
-    itemName: "Boss Special Cheese",
-    itemprice: 375.0,
-    restaurant: "Boss Burger",
-    itemSize: 'small',
-    itemCount: 1,
-  ),
-  CartItemsModel(
-    image: "lib/assets/special/chillyBurger.jpg",
-    itemName: "Boss Special Cheese",
-    itemprice: 375.0,
-    restaurant: "Boss Burger",
-    itemSize: 'small',
-    itemCount: 1,
-  ),
-];
+List<CartItemsModel> cartList = [];
 
 Widget bagItemContainer(
     context, cartItemIncrementDecrementHandler, removeCartItem) {
+  final currentWidth = MediaQuery.of(context).size.width;
   double total = 0;
   for (int i = 0; i < cartList.length; i++) {
     total += cartList[i].itemprice * cartList[i].itemCount;
@@ -43,12 +19,13 @@ Widget bagItemContainer(
         bagItemListBuilder(
             context, cartItemIncrementDecrementHandler, removeCartItem),
         Positioned(
-          bottom: 15,
-          child: Center(
-            widthFactor: 1.3,
+          bottom: 10,
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            width: currentWidth,
             child: startOrderingButton(
                 buttonText: "Place Order - $total",
-                hasCartItem: true,
+                hasCartItem: false,
                 context: context),
           ),
         )
@@ -82,9 +59,10 @@ Widget bagItemContainer(
 
       //Start Ordering Button
       Positioned(
-        bottom: 15,
-        child: Center(
-          widthFactor: 1.3,
+        bottom: 10,
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          width: currentWidth,
           child: startOrderingButton(
               buttonText: "Start Ordering",
               hasCartItem: false,
@@ -95,10 +73,10 @@ Widget bagItemContainer(
   );
 }
 
-InkWell startOrderingButton(
+GestureDetector startOrderingButton(
     {required String buttonText, required bool hasCartItem, required context}) {
   final currentNavBar = Provider.of<NavBarController>(context);
-  return InkWell(
+  return GestureDetector(
     onTap: () {
       if (hasCartItem) {
         // send to checkout
@@ -110,12 +88,13 @@ InkWell startOrderingButton(
         currentNavBar.changePage(0);
       }
     },
-    child: Container(
-      width: 300,
-      height: 50,
-      decoration: BoxDecoration(
-          color: Colors.orange, borderRadius: BorderRadius.circular(30)),
-      child: Center(
+    child: Center(
+      child: Container(
+        width: 300,
+        height: 50,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: Colors.orange, borderRadius: BorderRadius.circular(30)),
         child: Text(
           buttonText,
           style: const TextStyle(
