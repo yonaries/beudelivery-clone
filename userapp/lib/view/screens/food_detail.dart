@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
 import 'package:userapp/controller/similar_foods_controller.dart';

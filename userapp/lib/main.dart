@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/controller/navbar_provider.dart';
+import 'package:userapp/controller/notifications_controller.dart';
+import 'controller/order_page_controller.dart';
 import 'firebase_options.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -16,6 +18,8 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => NavBarController()),
+        ChangeNotifierProvider(create: (_) => OrdersHistoryController()),
+        ChangeNotifierProvider(create: (_) => NotificationsController()),
       ],
       child: const MyApp(),
     ),

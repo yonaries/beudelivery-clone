@@ -1,17 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-InkWell buildOrderHistory(
-  double currentWidth,
-  String orderId,
-  String orderTime,
-  String orderDate,
-  String orderStatus,
-  String totalItemsQuantity,
-  String paid,
-) {
+InkWell buildOrderHistory({
+  required double width,
+  required String orderId,
+  required String orderTime,
+  required String orderDate,
+  required String orderStatus,
+  required String totalItemsQuantity,
+  required String paid,
+}) {
+  // ignore: no_leading_underscores_for_local_identifiers
   String _orderDate = checkOrderDate(orderDate);
 
   return InkWell(
@@ -20,7 +19,7 @@ InkWell buildOrderHistory(
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        width: currentWidth,
+        width: width,
         height: 200,
         color: Colors.white,
         child: Column(

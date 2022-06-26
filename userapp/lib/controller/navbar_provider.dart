@@ -9,8 +9,7 @@ class NavBarController extends ChangeNotifier {
 
   void changePage(page) {
     _currentPageIndex = page;
-    // Navigator.pushReplacement(
-    //     context, MaterialPageRoute(builder: (context) => const Navbar()));
+
     log(_currentPageIndex.toString());
     notifyListeners();
   }

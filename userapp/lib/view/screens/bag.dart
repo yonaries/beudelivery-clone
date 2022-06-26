@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:userapp/view/components/appbar.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
@@ -33,7 +32,14 @@ class _BagScreenState extends State<BagScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: topAppBar(titleImage: "lib/assets/images/bag_text.png"),
+      appBar: topAppBar(
+        appbarTitle: const Text(
+          "Bag",
+          style:
+              TextStyle(color: Colors.deepOrange, fontWeight: FontWeight.bold),
+        ),
+        context: context,
+      ),
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
       body: bagItemContainer(
           context, cartItemIncrementDecrementHandler, removeCartItem),
