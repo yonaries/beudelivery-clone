@@ -5,6 +5,7 @@ import 'package:userapp/controller/bag_items_controller.dart';
 import 'package:userapp/controller/similar_foods_controller.dart';
 import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/model/local_favorites_model.dart';
+import 'package:userapp/model/restaurant_menu_model.dart';
 import 'package:userapp/model/similar_food_model.dart';
 import 'package:userapp/model/special_offers_dataModel.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
@@ -67,6 +68,13 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
       restaurant = food.restaurant;
       itemSize = food.itemSize;
     } else if (food is SimilarFoodModel) {
+      image = food.image;
+      itemName = food.itemName;
+      itemprice = food.itemprice;
+      description = food.description;
+      restaurant = food.restaurant;
+      itemSize = food.itemSize;
+    } else if (food is RestaurantMenuModel) {
       image = food.image;
       itemName = food.itemName;
       itemprice = food.itemprice;

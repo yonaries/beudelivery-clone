@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:userapp/view/components/home/tabs/foods.dart';
+import 'package:userapp/view/screens/restaurant_detail.dart';
 
-buildRestaurants(index, currentWidth) {
+buildRestaurants(index, currentWidth, context) {
   if (index < specials.length) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
@@ -21,7 +22,17 @@ buildRestaurants(index, currentWidth) {
           ],
         ),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const RestaurantDetailScreen(),
+                settings: RouteSettings(
+                  arguments: localFavorites[index],
+                ),
+              ),
+            );
+          },
           child: Row(
             children: [
               SizedBox(
@@ -169,7 +180,7 @@ class Restaurants extends StatelessWidget {
           child: ListView.builder(
             itemCount: specials.length + 1,
             itemBuilder: (context, index) =>
-                buildRestaurants(index, currentWidth),
+                buildRestaurants(index, currentWidth, context),
           ),
         ),
       ],
