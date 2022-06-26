@@ -19,6 +19,10 @@ class _LocalFavoritesState extends State<LocalFavorites> {
 
     return Expanded(
       child: MasonryGridView.builder(
+        controller: ScrollController(
+          keepScrollOffset: false,
+          initialScrollOffset: 0,
+        ),
         gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2),
         itemCount: localFavorites.length,

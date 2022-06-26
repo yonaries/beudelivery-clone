@@ -192,7 +192,10 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                       ),
 
                       // Render list of similar food component
-                      similarFoodsContainer(context)
+                      similarFoodsContainer(context),
+                      const SizedBox(
+                        height: 60,
+                      ),
                     ],
                   ),
                 ),
