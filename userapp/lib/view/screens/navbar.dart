@@ -6,6 +6,7 @@ import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/homepage.dart';
+import 'package:userapp/view/screens/profile.dart';
 
 //* states
 class Navbar extends StatefulWidget {
@@ -26,7 +27,7 @@ class _NavbarState extends State<Navbar> {
       Homepage(),
       BagScreen(),
       OrderPage(),
-      Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
+      ProfileScreen(),
     ];
     return Scaffold(
       body: pages[currentSelected],

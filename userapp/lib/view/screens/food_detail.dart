@@ -48,6 +48,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final currentWidth = MediaQuery.of(context).size.width;
+
     // recieving data from another page
     final food = ModalRoute.of(context)!.settings.arguments;
     if (food is SpecialOfferModel) {

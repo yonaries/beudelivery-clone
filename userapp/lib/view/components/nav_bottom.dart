@@ -72,6 +72,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   child: Image.asset("lib/assets/icons/user.png",
                       color: currentNavBar.selectedPage(3))),
               onPressed: () {
+                // Navigator.pop(context);
                 currentNavBar.changePage(3);
               },
             ),
