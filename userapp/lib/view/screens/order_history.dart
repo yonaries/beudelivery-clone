@@ -1,7 +1,12 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:userapp/controller/refresh_conroller.dart';
 
 import '../../model/demo_order_model.dart';
 import '../components/appbar.dart';
@@ -18,8 +23,20 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  var orderFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    orderFuture =
+        Provider.of<OrdersHistoryController>(context, listen: false).addData();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final controller = Provider.of<OrdersHistoryController>(context);
+    final ordersList = Provider.of<OrdersHistoryController>(context).orderList;
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
       appBar: topAppBar(
@@ -30,7 +47,14 @@ class _OrderPageState extends State<OrderPage> {
         ),
         context: context,
       ),
-      body: const EmptyOrderHistoryPage(),
+      body: refreshController(
+        onRefresh: () => controller.refresh(),
+        child: FutureBuilder(
+          future: orderFuture,
+          builder: ((context, snapshot) =>
+              controller.checkOrderHistory(ordersList: ordersList)),
+        ),
+      ),
     );
   }
 }

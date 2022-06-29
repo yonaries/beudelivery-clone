@@ -108,7 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: Container(
                 height: double.maxFinite,
-                color: Colors.white,
+                color: Colors.transparent,
                 child: ListView(
                   children: [
                     buildSetting(
@@ -153,10 +153,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                offset: const Offset(0, 3),
+                color: Colors.black.withOpacity(0.15),
+                offset: const Offset(0, 2),
                 spreadRadius: 1,
-                blurRadius: 2,
+                blurRadius: 3,
               )
             ],
           ),

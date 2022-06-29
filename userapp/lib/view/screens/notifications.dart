@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
 import 'package:userapp/view/components/notification/notification_tile.dart';
-import 'package:userapp/view/screens/navbar.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);

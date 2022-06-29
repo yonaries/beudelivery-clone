@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:userapp/controller/refresh_conroller.dart';
 
 import '../../../controller/navbar_provider.dart';
+import '../../../controller/order_page_controller.dart';
 
 class EmptyOrderHistoryPage extends StatefulWidget {
   const EmptyOrderHistoryPage({Key? key}) : super(key: key);
@@ -17,6 +19,7 @@ class _EmptyOrderHistoryPageState extends State<EmptyOrderHistoryPage> {
   Widget build(BuildContext context) {
     final currentWidth = MediaQuery.of(context).size.width;
     final currentNavBar = Provider.of<NavBarController>(context);
+    final controller = Provider.of<OrdersHistoryController>(context);
 
     return Stack(
       children: [
@@ -61,13 +64,14 @@ class _EmptyOrderHistoryPageState extends State<EmptyOrderHistoryPage> {
                   height: 50,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          Colors.deepOrange,
-                          Color.fromARGB(255, 255, 166, 64)
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(30)),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Colors.deepOrange,
+                        Color.fromARGB(255, 255, 166, 64)
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                   child: const Text(
                     "Start Ordering",
                     style: TextStyle(

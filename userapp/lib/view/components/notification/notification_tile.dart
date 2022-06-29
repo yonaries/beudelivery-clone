@@ -4,13 +4,13 @@ import 'package:provider/provider.dart';
 import '../../../controller/notifications_controller.dart';
 
 class NotificationTile extends StatefulWidget {
-  int index;
-  String image;
-  String message;
-  String time;
-  Color tileColor;
+  final int index;
+  final String image;
+  final String message;
+  final String time;
+  final Color tileColor;
 
-  NotificationTile(
+  const NotificationTile(
       {Key? key,
       required this.index,
       required this.image,
