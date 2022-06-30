@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/bag/bag_list_builder.dart';
+import 'package:userapp/view/screens/checkout.dart';
 
 List<CartItemsModel> cartList = [];
 
@@ -25,7 +26,7 @@ Widget bagItemContainer(
             width: currentWidth,
             child: startOrderingButton(
                 buttonText: "Place Order - $total",
-                hasCartItem: false,
+                hasCartItem: true,
                 context: context),
           ),
         )
@@ -80,9 +81,14 @@ GestureDetector startOrderingButton(
     onTap: () {
       if (hasCartItem) {
         // send to checkout
-        // Navigator.push(context, MaterialPageRoute(builder: (context) {
-        //   return
-        // }));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return CheckoutScreen();
+            },
+          ),
+        );
       } else {
         // Send to Home
         currentNavBar.changePage(0);

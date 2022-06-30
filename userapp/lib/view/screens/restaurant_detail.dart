@@ -142,7 +142,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   ),
                   // Menu
                   Padding(
-                    padding: const EdgeInsets.only(right: 8, left: 8, top: 8),
+                    padding: const EdgeInsets.only(top: 10),
                     child: SizedBox(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
