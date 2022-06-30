@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
 import 'package:userapp/controller/similar_foods_controller.dart';
@@ -51,6 +49,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final currentWidth = MediaQuery.of(context).size.width;
+
     // recieving data from another page
     final food = ModalRoute.of(context)!.settings.arguments;
     if (food is SpecialOfferModel) {
@@ -102,110 +101,118 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                 ),
 
                 //
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // name and price
-                      OrderDetailOrderComponent(
-                        foodName: itemName,
-                        foodType: itemSize,
-                        price: itemprice,
-                      ),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "From : $restaurant",
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(6),
-                            decoration: BoxDecoration(
-                              color: Colors.grey[300],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    plusAndMinusHandler(false);
-                                  },
-                                  child: Icon(
-                                    Icons.remove,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                  ),
-                                ),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 40,
-                                  child: Text(
-                                    "$itemCount",
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    plusAndMinusHandler(true);
-                                  },
-                                  child: Icon(
-                                    Icons.add,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-
-                      const SizedBox(
-                        height: 40,
-                      ),
-
-                      // Description
-                      Column(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // name and price
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Description",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        children: [
+                          OrderDetailOrderComponent(
+                            foodName: itemName,
+                            foodType: itemSize,
+                            price: itemprice,
                           ),
-                          SizedBox(
-                            height: 10,
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "From : $restaurant",
+                                style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        plusAndMinusHandler(false);
+                                      },
+                                      child: Icon(
+                                        Icons.remove,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      width: 40,
+                                      child: Text(
+                                        "$itemCount",
+                                        style: const TextStyle(fontSize: 20),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        plusAndMinusHandler(true);
+                                      },
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
-                          Text(
-                            "foodDescription",
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            ),
-                          )
+
+                          const SizedBox(
+                            height: 40,
+                          ),
+
+                          // Description
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "Description",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "foodDescription",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              )
+                            ],
+                          ),
+
+                          const SizedBox(
+                            height: 30,
+                          ),
                         ],
                       ),
+                    ),
 
-                      const SizedBox(
-                        height: 30,
-                      ),
-
-                      // Render list of similar food component
-                      similarFoodsContainer(context),
-                      const SizedBox(
-                        height: 60,
-                      ),
-                    ],
-                  ),
+                    // Render list of similar food component
+                    similarFoodsContainer(context),
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ],
                 ),
               ],
             ),
@@ -252,8 +259,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                     height: 50,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.circular(30)),
+                      gradient: const LinearGradient(
+                        colors: [
+                          Colors.deepOrange,
+                          Color.fromARGB(255, 255, 166, 64)
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                     child: const Text(
                       "Add To Bag",
                       style: TextStyle(

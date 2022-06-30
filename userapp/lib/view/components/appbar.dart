@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:userapp/view/screens/notifications.dart';
 
-AppBar topAppBar({required String titleImage}) {
+AppBar topAppBar({required Widget appbarTitle, required context}) {
   return AppBar(
     backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
     systemOverlayStyle: const SystemUiOverlayStyle(
@@ -19,10 +20,20 @@ AppBar topAppBar({required String titleImage}) {
     actions: [
       Padding(
         padding: const EdgeInsets.all(17.0),
-        child: Image.asset("lib/assets/icons/bell.png"),
+        child: GestureDetector(
+          onTap: () {
+            // Navigator.push(context, MaterialPageRoute(builder: (context) {
+            //   return const NotificationScreen();
+            // }));
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const NotificationScreen()),
+            );
+          },
+          child: Image.asset("lib/assets/icons/bell.png"),
+        ),
       )
     ],
-    title: SizedBox(child: Image.asset(titleImage)),
+    title: SizedBox(child: appbarTitle),
   );
 }
 

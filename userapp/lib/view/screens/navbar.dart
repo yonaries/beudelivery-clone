@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:userapp/view/screens/order_history.dart';
 
-import 'package:userapp/providers/navbar_provider.dart';
+import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/homepage.dart';
+import 'package:userapp/view/screens/profile.dart';
 
 //* states
 class Navbar extends StatefulWidget {
@@ -22,10 +24,10 @@ class _NavbarState extends State<Navbar> {
         Provider.of<NavBarController>(context).currentPageIndex;
     // app pages
     const pages = [
-      Center(child: Homepage()),
-      Center(child: BagScreen()),
-      Center(child: Text("Orders", style: TextStyle(fontSize: 20))),
-      Center(child: Text("Profile", style: TextStyle(fontSize: 20))),
+      Homepage(),
+      BagScreen(),
+      OrderPage(),
+      ProfileScreen(),
     ];
     return Scaffold(
       body: pages[currentSelected],

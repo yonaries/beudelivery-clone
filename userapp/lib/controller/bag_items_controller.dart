@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/model/bag_item_model.dart';
-import 'package:userapp/providers/navbar_provider.dart';
 import 'package:userapp/view/components/bag/bag_list_builder.dart';
 import 'package:userapp/view/screens/checkout.dart';
 
@@ -100,7 +100,10 @@ GestureDetector startOrderingButton(
         height: 50,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.orange, borderRadius: BorderRadius.circular(30)),
+            gradient: const LinearGradient(
+              colors: [Colors.deepOrange, Color.fromARGB(255, 255, 166, 64)],
+            ),
+            borderRadius: BorderRadius.circular(30)),
         child: Text(
           buttonText,
           style: const TextStyle(

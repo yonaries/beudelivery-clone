@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/navbar_provider.dart';
+import '../../controller/navbar_provider.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
@@ -72,6 +72,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   child: Image.asset("lib/assets/icons/user.png",
                       color: currentNavBar.selectedPage(3))),
               onPressed: () {
+                // Navigator.pop(context);
                 currentNavBar.changePage(3);
               },
             ),
