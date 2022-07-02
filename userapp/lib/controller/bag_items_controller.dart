@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/view/components/bag/bag_list_builder.dart';
+import 'package:userapp/view/components/toast.dart';
 import 'package:userapp/view/screens/checkout.dart';
 
 List<CartItemsModel> cartList = [];
@@ -18,7 +19,10 @@ Widget bagItemContainer(
     return Stack(
       children: [
         bagItemListBuilder(
-            context, cartItemIncrementDecrementHandler, removeCartItem),
+          context,
+          cartItemIncrementDecrementHandler,
+          removeCartItem,
+        ),
         Positioned(
           bottom: 10,
           child: Container(
@@ -79,19 +83,20 @@ GestureDetector startOrderingButton(
   final currentNavBar = Provider.of<NavBarController>(context);
   return GestureDetector(
     onTap: () {
-      if (hasCartItem) {
+      // checking if at least one of the item count is greater than 1
+      if (hasCartItem && cartList.any((item) => item.itemCount != 0)) {
         // send to checkout
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) {
-              return CheckoutScreen();
+              return const CheckoutScreen();
             },
           ),
         );
       } else {
         // Send to Home
-        currentNavBar.changePage(0);
+        showToastMessage(message: "Please Select Food Item");
       }
     },
     child: Center(

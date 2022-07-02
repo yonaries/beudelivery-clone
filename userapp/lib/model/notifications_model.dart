@@ -4,9 +4,10 @@ class NotificationsModel {
   String time;
   String status;
 
-  NotificationsModel(
-      {required this.image,
-      required this.message,
-      required this.time,
-      required this.status});
+  NotificationsModel({
+    required this.image,
+    required this.message,
+    required this.time,
+    required this.status,
+  });
 }

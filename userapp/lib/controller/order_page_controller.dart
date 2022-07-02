@@ -50,22 +50,22 @@ class OrdersHistoryController extends ChangeNotifier {
   Future<List<DemoOrderModel>> fetchOrders() async {
     await Future.delayed(const Duration(seconds: 2));
     return [
-      // DemoOrderModel(
-      //   orderId: "7873827428",
-      //   orderTime: "12:45 PM",
-      //   orderDate: "Jun 23, 2022",
-      //   orderStatus: "Delivered",
-      //   totalItemsQuantity: "9",
-      //   paid: "1080",
-      // ),
-      // DemoOrderModel(
-      //   orderId: "123456789",
-      //   orderTime: "2:45 PM",
-      //   orderDate: "Apr 12, 2022",
-      //   orderStatus: "Cancled",
-      //   totalItemsQuantity: "8",
-      //   paid: "1080",
-      // )
+      DemoOrderModel(
+        orderId: "7873827428",
+        orderTime: "12:45 PM",
+        orderDate: "Jun 23, 2022",
+        orderStatus: "Delivered",
+        totalItemsQuantity: "9",
+        paid: "1080",
+      ),
+      DemoOrderModel(
+        orderId: "123456789",
+        orderTime: "2:45 PM",
+        orderDate: "Apr 12, 2022",
+        orderStatus: "Cancled",
+        totalItemsQuantity: "8",
+        paid: "1080",
+      )
     ];
   }
 }
