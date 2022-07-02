@@ -24,6 +24,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: const BottomNavBar(),
       body: SingleChildScrollView(
@@ -45,7 +46,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
             // Other Text
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: currentWidth * 0.05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

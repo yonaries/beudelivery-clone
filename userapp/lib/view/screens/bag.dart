@@ -47,7 +47,10 @@ class _BagScreenState extends State<BagScreen> {
       ),
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
       body: bagItemContainer(
-          context, cartItemIncrementDecrementHandler, removeCartItem),
+        context,
+        cartItemIncrementDecrementHandler,
+        removeCartItem,
+      ),
     );
   }
 }

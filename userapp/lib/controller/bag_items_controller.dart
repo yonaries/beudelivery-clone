@@ -80,7 +80,6 @@ Widget bagItemContainer(
 
 GestureDetector startOrderingButton(
     {required String buttonText, required bool hasCartItem, required context}) {
-  final currentNavBar = Provider.of<NavBarController>(context);
   return GestureDetector(
     onTap: () {
       // checking if at least one of the item count is greater than 1

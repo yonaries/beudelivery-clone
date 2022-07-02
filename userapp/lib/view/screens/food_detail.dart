@@ -105,13 +105,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                 ),
 
                 //
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // name and price
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Column(
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: currentWidth * 0.05),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // name and price
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           OrderDetailOrderComponent(
@@ -209,14 +210,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                           ),
                         ],
                       ),
-                    ),
 
-                    // Render list of similar food component
-                    similarFoodsContainer(context),
-                    const SizedBox(
-                      height: 50,
-                    )
-                  ],
+                      // Render list of similar food component
+                      similarFoodsContainer(context),
+                      const SizedBox(
+                        height: 50,
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),

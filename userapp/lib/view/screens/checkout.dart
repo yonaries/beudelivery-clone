@@ -26,6 +26,7 @@ class CheckoutScreenState extends State<CheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final currentWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: const BottomNavBar(),
       appBar: AppBar(
@@ -47,7 +48,8 @@ class CheckoutScreenState extends State<CheckoutScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 40),
+          padding: EdgeInsets.only(
+              left: currentWidth * 0.05, right: currentWidth * 0.05, top: 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
