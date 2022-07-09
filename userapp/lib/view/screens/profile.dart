@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:userapp/controller/profile_controller.dart';
+import 'package:userapp/controller/user_profile_controller.dart';
 import 'package:userapp/view/components/appbar.dart';
+import 'package:userapp/view/screens/edit_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -12,7 +15,16 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
+  void initState() {
+    Provider.of<UserProfileController>(context, listen: false).getCustomer();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final customer = Provider.of<UserProfileController>(context).customer;
+    final controller = Provider.of<UserProfileController>(context);
+
     final currentHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
@@ -24,117 +36,128 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
         context: context,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              height: currentHeight * 0.2,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              decoration: BoxDecoration(
-                // color: Colors.white,
-                color: const Color.fromRGBO(245, 245, 248, 1),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    offset: const Offset(0, 3),
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                  )
-                ],
+      body: Column(
+        children: [
+          Container(
+            height: currentHeight * 0.2,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              // color: Colors.white,
+              color: const Color.fromRGBO(245, 245, 248, 1),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(0),
+                bottomRight: Radius.circular(0),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  offset: const Offset(0, 3),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                )
+              ],
+            ),
+            child: controller.isLoaded
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        width: 80,
-                        height: 80,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Image.asset(
-                            "lib/assets/restaurants/maxresdefault.jpg",
-                            fit: BoxFit.cover,
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 80,
+                            height: 80,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(50),
+                              child: Image.asset(
+                                customer[0].image,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(top: 7),
+                            height: 80,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  customer[0].fullName,
+                                  style: const TextStyle(fontSize: 25),
+                                ),
+                                GestureDetector(
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const EditProfile())),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                        color: Colors.deepOrangeAccent,
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: const Text(
+                                      "Edit Profile",
+                                      style: TextStyle(
+                                          fontSize: 13, color: Colors.white),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(top: 7),
                         height: 80,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "John Doe",
-                              style: TextStyle(fontSize: 25),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                  color: Colors.deepOrangeAccent,
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: const Text(
-                                "Edit Profile",
-                                style: TextStyle(
-                                    fontSize: 13, color: Colors.white),
-                              ),
-                            )
-                          ],
+                        child: Icon(
+                          Icons.arrow_forward_ios,
+                          size: 15,
+                          color: Colors.grey,
                         ),
-                      ),
+                      )
                     ],
-                  ),
-                  const SizedBox(
-                    height: 80,
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
-                      color: Colors.grey,
-                    ),
                   )
+                : const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.deepOrange,
+                    ),
+                  ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: Container(
+              height: double.maxFinite,
+              color: Colors.transparent,
+              child: ListView(
+                children: [
+                  buildSetting(
+                      title: "Payment Methods",
+                      icon: Icons.payments_outlined,
+                      color: Colors.redAccent),
+                  buildSetting(
+                      title: "Offers",
+                      icon: FontAwesomeIcons.ticketSimple,
+                      color: Colors.blueAccent),
+                  buildSetting(
+                    title: "Promo Codes",
+                    icon: FontAwesomeIcons.percent,
+                    color: Colors.amber,
+                  ),
+                  buildSetting(
+                    title: "Rewards",
+                    icon: FontAwesomeIcons.crown,
+                    color: Colors.purple,
+                  ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: Container(
-                height: double.maxFinite,
-                color: Colors.transparent,
-                child: ListView(
-                  children: [
-                    buildSetting(
-                        title: "Payment Methods",
-                        icon: Icons.payments_outlined,
-                        color: Colors.redAccent),
-                    buildSetting(
-                        title: "Offers",
-                        icon: FontAwesomeIcons.ticketSimple,
-                        color: Colors.blueAccent),
-                    buildSetting(
-                      title: "Promo Codes",
-                      icon: FontAwesomeIcons.percent,
-                      color: Colors.amber,
-                    ),
-                    buildSetting(
-                      title: "Rewards",
-                      icon: FontAwesomeIcons.crown,
-                      color: Colors.purple,
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

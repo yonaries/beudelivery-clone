@@ -42,7 +42,7 @@ class _BagItemState extends State<BagItem> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
-           BoxShadow(
+          BoxShadow(
             color: Color.fromRGBO(204, 196, 196, 0.6),
             blurRadius: 4,
             spreadRadius: 1,
@@ -76,8 +76,8 @@ class _BagItemState extends State<BagItem> {
               height: double.infinity,
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius:
-                    const BorderRadius.horizontal(left: const Radius.circular(12)),
+                borderRadius: const BorderRadius.horizontal(
+                    left: const Radius.circular(12)),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
@@ -92,11 +92,12 @@ class _BagItemState extends State<BagItem> {
             Expanded(
               child: Container(
                 decoration: const BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.horizontal(right: const Radius.circular(12)),
+                  borderRadius: const BorderRadius.horizontal(
+                      right: const Radius.circular(12)),
                   color: Colors.white,
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,7 +153,7 @@ class _BagItemState extends State<BagItem> {
                             widget.restaurant,
                             style: const TextStyle(
                               color: Colors.red,
-                              fontSize: 14,
+                              // fontSize: 14,
                             ),
                           ),
                         ),

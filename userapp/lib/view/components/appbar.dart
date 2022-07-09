@@ -36,5 +36,3 @@ AppBar topAppBar({required Widget appbarTitle, required context}) {
     title: SizedBox(child: appbarTitle),
   );
 }
-
-    // title: SizedBox(child: Image.asset("lib/assets/images/beudelivery.png")),

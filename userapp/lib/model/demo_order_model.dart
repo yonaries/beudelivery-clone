@@ -5,7 +5,7 @@ class DemoOrderModel {
   String orderStatus;
   String totalItemsQuantity;
   String paid;
-
+  List<Items> item;
   DemoOrderModel({
     required this.orderId,
     required this.orderTime,
@@ -13,5 +13,13 @@ class DemoOrderModel {
     required this.orderStatus,
     required this.totalItemsQuantity,
     required this.paid,
+    required this.item,
   });
+}
+
+class Items {
+  String itemName;
+  String quantity;
+
+  Items({required this.itemName, required this.quantity});
 }

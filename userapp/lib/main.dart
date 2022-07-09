@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
+import 'package:userapp/controller/user_profile_controller.dart';
 import 'controller/order_page_controller.dart';
 import 'firebase_options.dart';
 
@@ -20,6 +21,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => NavBarController()),
         ChangeNotifierProvider(create: (_) => OrdersHistoryController()),
         ChangeNotifierProvider(create: (_) => NotificationsController()),
+        ChangeNotifierProvider(create: (_) => UserProfileController()),
       ],
       child: const MyApp(),
     ),

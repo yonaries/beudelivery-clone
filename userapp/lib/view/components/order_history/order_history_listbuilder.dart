@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:userapp/model/demo_order_model.dart';
 
 import 'order_history_list.dart';
 
 class OrdersHistoryListView extends StatelessWidget {
-  final List orders;
+  final List<DemoOrderModel> orders;
   const OrdersHistoryListView({Key? key, required this.orders})
       : super(key: key);
 
@@ -22,6 +23,7 @@ class OrdersHistoryListView extends StatelessWidget {
               orderStatus: orders[index].orderStatus,
               totalItemsQuantity: orders[index].totalItemsQuantity,
               paid: orders[index].paid,
+              item: orders[index].item,
             )),
       ),
     );

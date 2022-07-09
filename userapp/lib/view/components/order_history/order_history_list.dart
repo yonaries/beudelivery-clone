@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:developer';
 
-Widget buildOrderHistory({
-  required double width,
-  required String orderId,
-  required String orderTime,
-  required String orderDate,
-  required String orderStatus,
-  required String totalItemsQuantity,
-  required String paid,
-}) {
+import '../../../model/demo_order_model.dart';
+
+Widget buildOrderHistory(
+    {required double width,
+    required String orderId,
+    required String orderTime,
+    required String orderDate,
+    required String orderStatus,
+    required String totalItemsQuantity,
+    required String paid,
+    required List<Items> item}) {
   // ignore: no_leading_underscores_for_local_identifiers
-  String _orderDate = checkOrderDate(orderDate);
-
+  String _orderDate = convertOrderDate(orderDate);
+  log(item.toString());
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      print(item);
+      for (var element in item) {
+        log(element.itemName.toString());
+        log(element.quantity.toString());
+      }
+    },
     child: Container(
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -62,14 +71,11 @@ Widget buildOrderHistory({
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 17),
                   ),
-                  const Text(
-                    "Boss Special Cheese x2",
-                    style: TextStyle(color: Colors.grey),
+                  Stack(
+                    // width: 200,
+                    children: [iterateItems(item: item)],
                   ),
-                  const Text(
-                    "Square Pizza x2",
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                  // Expanded(child: ListView.builder(itemBuilder: (context, index) => iterateItems(item: item) )),
                   const Text(
                     "and more",
                     style: TextStyle(color: Colors.grey),
@@ -107,7 +113,7 @@ Color styleOrderStatus(orderStatus) {
   }
 }
 
-checkOrderDate(orderDate) {
+convertOrderDate(orderDate) {
   String currentDate = DateFormat.yMMMd().format(DateTime.now());
 
   if (currentDate == orderDate) {
@@ -115,4 +121,32 @@ checkOrderDate(orderDate) {
   } else {
     return orderDate;
   }
+}
+
+iterateItems({required List<Items> item}) {
+  List<Widget> names = [];
+  for (int i = 0; i < 2; i++) {
+    final name = item[i].itemName;
+    final quantity = item[i].quantity;
+
+    names.add(Text(
+      "$name x$quantity",
+      style: const TextStyle(color: Colors.grey),
+    ));
+  }
+
+  // if (item.length > 2) {
+  //   names.add(
+  //     const Text(
+  //       "and more",
+  //       style: TextStyle(color: Colors.grey),
+  //     ),
+  //   );
+  // }
+  // log(names.toString());
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: names,
+  );
 }

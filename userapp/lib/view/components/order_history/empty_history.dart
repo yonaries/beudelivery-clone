@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:userapp/controller/refresh_conroller.dart';
 
 import '../../../controller/navbar_provider.dart';
 import '../../../controller/order_page_controller.dart';
@@ -43,6 +42,21 @@ class _EmptyOrderHistoryPageState extends State<EmptyOrderHistoryPage> {
                   fontSize: 14,
                 ),
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.resolveWith(
+                      (states) => Colors.deepOrangeAccent),
+                  foregroundColor: MaterialStateProperty.resolveWith(
+                      (states) => Colors.white),
+                ),
+                onPressed: () {
+                  controller.toFalse();
+                },
+                child: const Text("Refresh"),
+              )
             ],
           ),
         ),

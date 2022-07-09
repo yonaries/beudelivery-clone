@@ -10,7 +10,8 @@ Widget refreshController(
     showChildOpacityTransition: false,
     onRefresh: onRefresh,
     color: isColorProvided(color),
-    animSpeedFactor: 5,
+    animSpeedFactor: 2,
+    springAnimationDurationInMilliseconds: 300,
     height: 100,
     child: child,
   );
