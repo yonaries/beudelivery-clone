@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:userapp/view/components/checkout/checkout-button.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 
 import '../components/checkout/buttons.dart';
@@ -196,29 +197,7 @@ class CheckoutScreenState extends State<CheckoutScreen> {
 
               // Checkout Button
 
-              GestureDetector(
-                onTap: () {
-                  // show success message
-                },
-                child: Center(
-                  child: Container(
-                    width: 350,
-                    height: 60,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: const Text(
-                      "Checkout",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              )
+              checkoutButton(title: "Checkout")
             ],
           ),
         ),

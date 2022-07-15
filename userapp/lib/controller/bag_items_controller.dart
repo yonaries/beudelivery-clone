@@ -29,9 +29,10 @@ Widget bagItemContainer(
             alignment: Alignment.bottomCenter,
             width: currentWidth,
             child: startOrderingButton(
-                buttonText: "Place Order - $total",
-                hasCartItem: true,
-                context: context),
+              buttonText: "Place Order - $total",
+              hasCartItem: true,
+              context: context,
+            ),
           ),
         )
       ],

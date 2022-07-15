@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
+import 'package:userapp/view/screens/card_detail.dart';
 import 'controller/order_page_controller.dart';
 import 'firebase_options.dart';
 
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const Navbar(),
+      home: CardDetailScreen(),
     );
   }
 }
