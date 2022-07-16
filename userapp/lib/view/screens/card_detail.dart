@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:userapp/view/components/checkout/card_provider.dart';
-import 'package:userapp/view/components/checkout/checkout-button.dart';
+import 'package:userapp/view/components/common-button.dart';
 import 'package:userapp/view/components/checkout/dropdown_button.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 
@@ -373,7 +373,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                   ),
 
                   // Pay Button
-                  checkoutButton(title: "Pay"),
+                  commonButton(title: "Pay"),
                   SizedBox(
                     height: 20,
                   ),

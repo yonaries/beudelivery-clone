@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast/toast.dart';
 import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
-import 'package:userapp/view/screens/card_detail.dart';
+import 'package:userapp/view/screens/bag.dart';
+import 'package:userapp/view/screens/sign_in.dart';
+import 'package:userapp/view/screens/verification.dart';
 import 'controller/order_page_controller.dart';
 import 'firebase_options.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:userapp/view/screens/navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: CardDetailScreen(),
+      home: SignInScreen(),
     );
   }
 }
