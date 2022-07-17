@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
 import 'package:userapp/view/components/order_details/order_detail_totals_section.dart';
 import 'package:userapp/view/components/order_details/order_details_info_section.dart';
-import 'package:userapp/view/screens/splash.dart';
 
 class OrderDetailScreen extends StatefulWidget {
   const OrderDetailScreen({Key? key}) : super(key: key);
@@ -19,9 +18,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
         toolbarHeight: 70,
         leading: GestureDetector(
           onTap: () {
-            // Need change when homepage is done
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const SplashScreen()));
+            Navigator.pop(context);
           },
           child: Icon(
             Icons.arrow_back_ios_outlined,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:userapp/view/screens/profile.dart';
 
 import '../../controller/navbar_provider.dart';
 
@@ -68,11 +69,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             IconButton(
               icon: SizedBox(
-                  width: currentWidth / 4,
-                  child: Image.asset("lib/assets/icons/user.png",
-                      color: currentNavBar.selectedPage(3))),
+                width: currentWidth / 4,
+                child: Image.asset(
+                  "lib/assets/icons/user.png",
+                  color: currentNavBar.selectedPage(3),
+                ),
+              ),
               onPressed: () {
-                // Navigator.pop(context);
+                // Navigator.pop(context, const ProfileScreen());
                 currentNavBar.changePage(3);
               },
             ),

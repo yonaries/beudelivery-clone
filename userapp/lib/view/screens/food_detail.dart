@@ -74,7 +74,6 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
       itemSize = food.itemSize;
     }
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -211,7 +210,6 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
           ),
 
           // Add to bag button
-          ///////////
           Positioned(
             bottom: 10,
             child: Container(
@@ -233,6 +231,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                   bool addToCart = true;
                   for (var item in cartList) {
                     {
+                      //TODO: itemName should be changed to itemId, b/c multiple restaurant might have the same food with same name
                       if (item.itemName == newItem.itemName) {
                         addToCart = false;
                       }

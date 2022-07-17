@@ -38,7 +38,7 @@ class OrdersHistoryController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addData() async {
+  Future<void> addDataToList() async {
     final data = await fetchOrders();
     if (_ordersList.isEmpty) {
       _ordersList.addAll(data);

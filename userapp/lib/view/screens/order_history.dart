@@ -20,8 +20,8 @@ class _OrderPageState extends State<OrderPage> {
   @override
   void initState() {
     super.initState();
-    orderFuture =
-        Provider.of<OrdersHistoryController>(context, listen: false).addData();
+    orderFuture = Provider.of<OrdersHistoryController>(context, listen: false)
+        .addDataToList();
   }
 
   @override

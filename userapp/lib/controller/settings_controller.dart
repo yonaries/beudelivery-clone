@@ -1,8 +1,11 @@
 import 'dart:developer';
 
-class ProfileController {
+import 'package:flutter/material.dart';
+import 'package:userapp/view/screens/offers.dart';
+
+class SettingsController {
   //goto clicked settings
-  goToSetting({required title}) {
+  goToSetting({required title, required context}) {
     if (title == "Payment Methods") {
       // ignore: todo
       //TODO send to payment method screen
@@ -10,15 +13,15 @@ class ProfileController {
       //   return
       // }));
       log(title);
-    } else if (title == "Offers") {
+    } else if (title == "Coupons") {
       // ignore: todo
       //TODO send to offers screen
-      // Navigator.push(context, MaterialPageRoute(builder: (context) {
-      //   return
-      // }));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+        return const CouponsScreen();
+      }));
       log(title);
     }
-    if (title == "Promo Codes") {
+    if (title == "Favorites") {
       // ignore: todo
       //TODO send to Promo Codes
       // Navigator.push(context, MaterialPageRoute(builder: (context) {

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 
 import '../../controller/user_profile_controller.dart';
-import 'package:userapp/model/customerModel.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -22,7 +18,6 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     final currentWidth = MediaQuery.of(context).size.width;
-    final currentHeight = MediaQuery.of(context).size.height;
 
     final customer = Provider.of<UserProfileController>(context).customer[0];
 
@@ -91,7 +86,6 @@ class _EditProfileState extends State<EditProfile> {
           )
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 
