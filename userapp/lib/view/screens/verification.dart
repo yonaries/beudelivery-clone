@@ -1,53 +1,66 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:userapp/view/components/verification/inputBox.dart';
+import 'package:userapp/view/components/verification/input_box.dart';
 
 class VerificationScreen extends StatefulWidget {
-  VerificationScreen({Key? key}) : super(key: key);
+  final Function sendCodeToFirebase;
+  const VerificationScreen({Key? key, required this.sendCodeToFirebase}) : super(key: key);
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
-  String verificationCode = "";
+  List verificationCode = [];
 
   @override
   Widget build(BuildContext context) {
-    final currentHeight = MediaQuery.of(context).size.height;
 
-    inputChangeHandler(newCode) {
+    inputChangeHandler(newCode, id) {
+      bool isEmpty = true;
       setState(() {
-        verificationCode += newCode.text.trim();
+        verificationCode[id] = newCode.text.trim();
       });
-      log(verificationCode);
+
+      for (int i = 0; i < 6; i++) {
+        if (verificationCode[i].isEmpty) {
+          break;
+        } else {
+          isEmpty = true;
+        }
+      }
+      log("$verificationCode // ${verificationCode.length}");
+
+      if (isEmpty == true) {
+        widget.sendCodeToFirebase(smsCode: verificationCode);
+      }
     }
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           height: 800,
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          constraints: BoxConstraints(maxWidth: 500, minWidth: 300),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          constraints: const BoxConstraints(maxWidth: 500, minWidth: 300),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
-              Text(
+              const Text(
                 "Verify Your Code",
-                style: TextStyle(
+                style:  TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "We have the reset password to the phone number : 0912131415",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -55,7 +68,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               // Verification code input
@@ -64,20 +77,32 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 children: [
                   InputBox(
                       verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler),
+                      inputChangeHandler: inputChangeHandler,
+                      id: 01),
                   InputBox(
                       verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler),
+                      inputChangeHandler: inputChangeHandler,
+                      id: 1),
                   InputBox(
                       verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler),
+                      inputChangeHandler: inputChangeHandler,
+                      id: 2),
                   InputBox(
                       verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler),
+                      inputChangeHandler: inputChangeHandler,
+                      id: 3),
+                  InputBox(
+                      verificationCode: verificationCode,
+                      inputChangeHandler: inputChangeHandler,
+                      id: 4),
+                  InputBox(
+                      verificationCode: verificationCode,
+                      inputChangeHandler: inputChangeHandler,
+                      id: 5),
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
 
@@ -99,9 +124,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
+                    child: const Text(
                       "VERIFY",
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -111,7 +136,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
@@ -119,6 +144,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               GestureDetector(
                 onTap: () {
                   // show success message
+                  Navigator.pop(context);
                 },
                 child: Center(
                   child: Container(
@@ -128,9 +154,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
-                      "BACK TO LOGIN",
-                      style: const TextStyle(
+                    child: const Text(
+                      "BACK",
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -140,20 +166,20 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               // REsend code text and link
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "You have not received code? ",
                   ),
                   GestureDetector(
-                    child: Text(
+                    child: const Text(
                       "Resend",
-                      style: TextStyle(
+                      style:  TextStyle(
                         color: Colors.deepOrange,
                         decoration: TextDecoration.underline,
                       ),

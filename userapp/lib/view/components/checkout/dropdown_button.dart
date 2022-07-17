@@ -6,7 +6,7 @@ Container dropdownButton({
   required dropdownChangeHandler,
 }) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
     decoration: BoxDecoration(
       border: Border.all(color: Colors.grey),
       borderRadius: BorderRadius.circular(50),
@@ -20,16 +20,16 @@ Container dropdownButton({
       ),
       isExpanded: true,
       elevation: 1,
-      hint: Text("Choose your country"),
+      hint: const Text("Choose your country"),
       value: countryValue.isNotEmpty ? countryValue : null,
       onChanged: dropdownChangeHandler,
       items: countryList.map((country) {
         return DropdownMenuItem(
+          value: country,
           child: Text(
             country,
-            style: TextStyle(color: Colors.grey),
+            style: const TextStyle(color: Colors.grey),
           ),
-          value: country,
         );
       }).toList(),
     ),

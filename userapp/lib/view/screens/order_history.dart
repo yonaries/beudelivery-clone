@@ -1,7 +1,3 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
-
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:provider/provider.dart';

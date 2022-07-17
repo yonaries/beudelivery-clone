@@ -4,6 +4,7 @@ import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
 import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/sign_in.dart';
+import 'package:userapp/view/screens/sign_up.dart';
 import 'package:userapp/view/screens/verification.dart';
 import 'controller/order_page_controller.dart';
 import 'firebase_options.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: SignInScreen(),
+      home: SignUpScreen(),
     );
   }
 }

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:userapp/controller/restaurant_menu_controller.dart';
-import 'package:userapp/view/components/home/tabs/foods.dart';
-import 'package:userapp/view/components/home/tabs/foods/localfavorites.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/restaurant_detail/restaurant_image.dart';
-import 'package:userapp/view/screens/food_detail.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
   const RestaurantDetailScreen({Key? key}) : super(key: key);
@@ -40,7 +36,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
               context: context,
             ),
 
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
 
@@ -50,7 +46,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Angla Burger",
                     style: TextStyle(
                       fontSize: 30,
@@ -75,7 +71,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.location_on,
                                     color: Colors.red,
                                     size: 22,
@@ -95,7 +91,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                             Flexible(
                                 flex: 1,
                                 child: RichText(
-                                  text: TextSpan(
+                                  text: const TextSpan(
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.black,
@@ -117,11 +113,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     },
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
 
-                  Text(
+                  const Text(
                     "Description",
                     style: TextStyle(
                       color: Colors.black87,
@@ -130,7 +126,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     ),
                   ),
 
-                  Text(
+                  const Text(
                     "description description description description description desc description description description description description description description description description description description description description description description",
                     style: TextStyle(
                       color: Colors.grey,
@@ -138,7 +134,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     ),
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   // Menu

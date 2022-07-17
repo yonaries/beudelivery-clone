@@ -54,6 +54,6 @@ Widget restaurantMenu(context) {
   final currentWidth = MediaQuery.of(context).size.width;
   return SizedBox(
     height: (currentWidth / 2 * 0.85) * 3,
-    child: Column(children: [RestaurantMenu()]),
+    child: Column(children: const [RestaurantMenu()]),
   );
 }

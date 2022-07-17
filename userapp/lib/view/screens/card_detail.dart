@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:userapp/view/components/checkout/card_provider.dart';
-import 'package:userapp/view/components/common-button.dart';
+import 'package:userapp/view/components/common_button.dart';
 import 'package:userapp/view/components/checkout/dropdown_button.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 
 class CardDetailScreen extends StatefulWidget {
-  CardDetailScreen({Key? key}) : super(key: key);
+  const CardDetailScreen({Key? key}) : super(key: key);
 
   @override
   State<CardDetailScreen> createState() => _CardDetailScreenState();
@@ -138,7 +138,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                           Image.asset("lib/assets/icons/Discover.jpg"),
                     ),
                   ]),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   const Padding(
@@ -176,7 +176,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
 
@@ -219,7 +219,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
 
@@ -257,7 +257,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                               },
                               child: Container(
                                 height: 60,
-                                padding: EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 alignment: Alignment.centerLeft,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey),
@@ -266,7 +266,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                                 ),
                                 child: Text(
                                   date,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 16,
                                   ),
@@ -331,7 +331,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               // Dropdown Countr selector
@@ -374,7 +374,7 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
 
                   // Pay Button
                   commonButton(title: "Pay"),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                 ],

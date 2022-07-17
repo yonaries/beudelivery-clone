@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:userapp/view/components/common-button.dart';
+import 'package:userapp/view/components/common_button.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 
 import '../components/checkout/buttons.dart';

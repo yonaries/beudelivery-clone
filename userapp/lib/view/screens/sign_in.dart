@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
-  SignInScreen({Key? key}) : super(key: key);
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -9,6 +9,13 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final _phoneController = TextEditingController();
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentHeight = MediaQuery.of(context).size.height;
@@ -16,18 +23,18 @@ class _SignInScreenState extends State<SignInScreen> {
       body: SingleChildScrollView(
         child: Container(
           height: currentHeight,
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          constraints: BoxConstraints(maxWidth: 500, minWidth: 300),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          constraints: const BoxConstraints(maxWidth: 500, minWidth: 300),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("lib/assets/icons/beu_logo_png.png"),
 
-              SizedBox(
-                height: 50,
+              const SizedBox(
+                height: 20,
               ),
-              Text(
+              const Text(
                 "Sign In",
                 style: TextStyle(
                   fontSize: 40,
@@ -35,18 +42,18 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "Enter Your phone number to signup or signin toyour account.",
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style:  TextStyle(
                   color: Colors.grey,
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
 
@@ -56,12 +63,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.circular(5),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       "+251",
-                      style: TextStyle(
+                      style:  TextStyle(
                         fontSize: 22,
                         color: Colors.grey,
                       ),
@@ -72,22 +79,22 @@ class _SignInScreenState extends State<SignInScreen> {
                         cursorColor: Colors.deepOrange,
                         controller: _phoneController,
                         keyboardType: TextInputType.phone,
-                        style: TextStyle(fontSize: 22),
-                        decoration: InputDecoration(
+                        style: const TextStyle(fontSize: 22),
+                        decoration: const InputDecoration(
                           contentPadding:
-                              EdgeInsets.only(top: 10, bottom: 10, left: 20),
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                               EdgeInsets.only(top: 10, bottom: 10, left: 20),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                             ),
                           ),
                           hintText: "987123456",
-                          hintStyle: const TextStyle(color: Colors.grey),
+                          hintStyle: TextStyle(color: Colors.grey),
                         ),
                       ),
                     ),
@@ -95,7 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               // Sign in button
@@ -116,9 +123,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
+                    child: const Text(
                       "SIGN IN",
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

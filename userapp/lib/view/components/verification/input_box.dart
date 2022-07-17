@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class InputBox extends StatefulWidget {
-  String verificationCode;
-  Function inputChangeHandler;
-  InputBox(
-      {Key? key,
-      required this.verificationCode,
-      required this.inputChangeHandler})
-      : super(key: key);
+  final List verificationCode;
+  final Function inputChangeHandler;
+  final int id;
+  const InputBox({
+    Key? key,
+    required this.verificationCode,
+    required this.inputChangeHandler,
+    required this.id,
+  }) : super(key: key);
 
   @override
   State<InputBox> createState() => _InputBoxState();
@@ -37,14 +39,15 @@ class _InputBoxState extends State<InputBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 70,
-      height: 70,
+    return SizedBox(
+      width: 50,
+      height: 50,
       child: TextField(
         controller: _verificationNumberController,
         cursorColor: Colors.grey,
         keyboardType: TextInputType.phone,
         textAlign: TextAlign.center,
+        textAlignVertical: TextAlignVertical.center,
         inputFormatters: [
           LengthLimitingTextInputFormatter(1),
           FilteringTextInputFormatter.digitsOnly,
@@ -56,15 +59,15 @@ class _InputBoxState extends State<InputBox> {
             FocusScope.of(context).nextFocus();
             setState(() {
               isChanged = true;
-              widget.inputChangeHandler(_verificationNumberController);
+              widget.inputChangeHandler(_verificationNumberController, widget.id);
             });
           }
-          if (widget.verificationCode.length == 3) {
+          if (widget.verificationCode.length == 5) {
             log("Done");
           }
         },
         style: TextStyle(
-          fontSize: 30,
+          fontSize: 20,
           color: isChanged ? Colors.white : Colors.black,
         ),
         decoration: InputDecoration(
