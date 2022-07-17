@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
 import 'package:userapp/controller/similar_foods_controller.dart';
 import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/model/local_favorites_model.dart';
+import 'package:userapp/model/restaurant_menu_model.dart';
 import 'package:userapp/model/similar_food_model.dart';
 import 'package:userapp/model/special_offers_dataModel.dart';
 import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
 import 'package:userapp/view/components/food_datails/food_image.dart';
+import 'package:userapp/view/components/toast.dart';
 
 class FoodDetailScreen extends StatefulWidget {
   const FoodDetailScreen({key}) : super(key: key);
@@ -25,7 +28,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
   String restaurant = "";
   String description = "";
 
-  int itemCount = 0;
+  int itemCount = 1;
   bool isFavorite = false;
   void plusAndMinusHandler(bool add) {
     if (add) {
@@ -47,6 +50,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     final currentWidth = MediaQuery.of(context).size.width;
 
     // recieving data from another page
@@ -72,7 +76,15 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
       description = food.description;
       restaurant = food.restaurant;
       itemSize = food.itemSize;
+    } else if (food is RestaurantMenuModel) {
+      image = food.image;
+      itemName = food.itemName;
+      itemprice = food.itemprice;
+      description = food.description;
+      restaurant = food.restaurant;
+      itemSize = food.itemSize;
     }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -92,13 +104,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                 ),
 
                 //
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // name and price
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: Column(
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: currentWidth * 0.05),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // name and price
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           OrderDetailOrderComponent(
@@ -196,14 +209,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                           ),
                         ],
                       ),
-                    ),
 
-                    // Render list of similar food component
-                    similarFoodsContainer(context),
-                    const SizedBox(
-                      height: 50,
-                    )
-                  ],
+                      // Render list of similar food component
+                      similarFoodsContainer(context),
+                      const SizedBox(
+                        height: 50,
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -224,7 +237,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                     itemprice: itemprice,
                     restaurant: restaurant,
                     itemSize: itemSize,
-                    itemCount: 1,
+                    itemCount: itemCount,
                   );
 
                   // logic to check if item is on cart or not
@@ -238,10 +251,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                     }
                   }
 
+                  // adding to cart
                   if (addToCart) {
                     cartList.add(newItem);
+                    showToastMessage(
+                        message: "Food added to cart successfully.");
                   } else {
                     // show toast if the item is already on cart
+                    showToastMessage(message: "Food is already inside cart.");
                   }
                 },
                 child: Center(

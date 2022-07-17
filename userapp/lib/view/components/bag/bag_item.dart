@@ -38,7 +38,7 @@ class _BagItemState extends State<BagItem> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      height: 110,
+      height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
@@ -70,6 +70,7 @@ class _BagItemState extends State<BagItem> {
 
         // Food Content
         child: Row(
+          verticalDirection: VerticalDirection.up,
           children: [
             Container(
               width: 110,
@@ -148,9 +149,10 @@ class _BagItemState extends State<BagItem> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Flexible(
-                          flex: 2,
+                          flex: 1,
                           child: Text(
                             widget.restaurant,
+                            softWrap: true,
                             style: const TextStyle(
                               color: Colors.red,
                               // fontSize: 14,
@@ -164,14 +166,16 @@ class _BagItemState extends State<BagItem> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  setState(() {
-                                    itemCount = widget
-                                        .cartItemIncrementDecrementHandler(
-                                            false, widget.index);
-                                  });
+                                  setState(
+                                    () {
+                                      itemCount = widget
+                                          .cartItemIncrementDecrementHandler(
+                                              false, widget.index);
+                                    },
+                                  );
                                 },
                                 child: Container(
-                                  color: Colors.amber,
+                                  color: Colors.deepOrange,
                                   child: const Icon(
                                     Icons.remove,
                                     size: 20,
@@ -200,7 +204,7 @@ class _BagItemState extends State<BagItem> {
                                   });
                                 },
                                 child: Container(
-                                  color: Colors.amber,
+                                  color: Colors.deepOrange,
                                   child: const Icon(
                                     Icons.add,
                                     size: 20,

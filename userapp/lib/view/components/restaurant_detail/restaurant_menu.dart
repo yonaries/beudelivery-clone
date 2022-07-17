@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:userapp/controller/restaurant_menu_controller.dart';
 import 'package:userapp/view/screens/food_detail.dart';
 
-import '../foods.dart';
-
-class LocalFavorites extends StatefulWidget {
-  const LocalFavorites({Key? key}) : super(key: key);
+class RestaurantMenu extends StatefulWidget {
+  const RestaurantMenu({Key? key}) : super(key: key);
 
   @override
-  State<LocalFavorites> createState() => _LocalFavoritesState();
+  State<RestaurantMenu> createState() => _RestaurantMenuState();
 }
 
-class _LocalFavoritesState extends State<LocalFavorites> {
+class _RestaurantMenuState extends State<RestaurantMenu> {
   @override
   Widget build(BuildContext context) {
     // current screen ratio
@@ -25,7 +24,7 @@ class _LocalFavoritesState extends State<LocalFavorites> {
         ),
         gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2),
-        itemCount: localFavorites.length,
+        itemCount: restaurantMenuList.length,
         itemBuilder: (context, index) => Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -43,14 +42,14 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                           MaterialPageRoute(
                             builder: (context) => const FoodDetailScreen(),
                             settings: RouteSettings(
-                              arguments: localFavorites[index],
+                              arguments: restaurantMenuList[index],
                             ),
                           ),
                         );
                       },
                       child: Ink.image(
                         fit: BoxFit.cover,
-                        image: AssetImage(localFavorites[index].image),
+                        image: AssetImage(restaurantMenuList[index].image),
                       ),
                     ),
                   ),
@@ -60,7 +59,7 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                 height: 5,
               ),
               Text(
-                localFavorites[index].itemName,
+                restaurantMenuList[index].itemName,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               Row(
@@ -74,7 +73,7 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      localFavorites[index].itemTag,
+                      restaurantMenuList[index].itemTag,
                       style: const TextStyle(
                           fontSize: 12, color: Colors.deepOrange),
                     ),
@@ -88,7 +87,7 @@ class _LocalFavoritesState extends State<LocalFavorites> {
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        localFavorites[index].itemprice.toString(),
+                        restaurantMenuList[index].itemprice.toString(),
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],

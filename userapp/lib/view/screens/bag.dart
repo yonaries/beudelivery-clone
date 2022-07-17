@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 import 'package:userapp/view/components/appbar.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
+import 'package:userapp/view/components/toast.dart';
+import 'package:userapp/view/screens/food_detail.dart';
 
 class BagScreen extends StatefulWidget {
   const BagScreen({Key? key}) : super(key: key);
@@ -26,11 +29,13 @@ class _BagScreenState extends State<BagScreen> {
   void removeCartItem(int index) {
     setState(() {
       cartList.remove(cartList[index]);
+      showToastMessage(message: "Item removed succesfully.");
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       appBar: topAppBar(
         appbarTitle: const Text(
@@ -42,7 +47,10 @@ class _BagScreenState extends State<BagScreen> {
       ),
       backgroundColor: const Color.fromRGBO(245, 245, 248, 1),
       body: bagItemContainer(
-          context, cartItemIncrementDecrementHandler, removeCartItem),
+        context,
+        cartItemIncrementDecrementHandler,
+        removeCartItem,
+      ),
     );
   }
 }
