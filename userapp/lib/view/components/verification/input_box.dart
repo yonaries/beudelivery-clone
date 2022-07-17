@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class InputBox extends StatefulWidget {
-  final List verificationCode;
+  // final List<String> verificationCode;
   final Function inputChangeHandler;
   final int id;
   const InputBox({
     Key? key,
-    required this.verificationCode,
     required this.inputChangeHandler,
     required this.id,
   }) : super(key: key);
@@ -21,16 +20,6 @@ class InputBox extends StatefulWidget {
 class _InputBoxState extends State<InputBox> {
   final _verificationNumberController = TextEditingController();
   bool isChanged = false;
-  bool isEnabled = true;
-
-  checkCode() {
-    if (widget.verificationCode.length == 4) {
-      setState(() {
-        isEnabled = false;
-      });
-    }
-  }
-
   @override
   void dispose() {
     _verificationNumberController.dispose();
@@ -61,9 +50,6 @@ class _InputBoxState extends State<InputBox> {
               isChanged = true;
               widget.inputChangeHandler(_verificationNumberController, widget.id);
             });
-          }
-          if (widget.verificationCode.length == 5) {
-            log("Done");
           }
         },
         style: TextStyle(

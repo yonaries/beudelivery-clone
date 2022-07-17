@@ -5,35 +5,42 @@ import 'package:userapp/view/components/verification/input_box.dart';
 
 class VerificationScreen extends StatefulWidget {
   final Function sendCodeToFirebase;
-  const VerificationScreen({Key? key, required this.sendCodeToFirebase}) : super(key: key);
+  const VerificationScreen({Key? key, required this.sendCodeToFirebase})
+      : super(key: key);
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
-  List verificationCode = [];
+  List<String> verificationCode = ["", "", "", "", "", ""];
+  String code = "";
 
   @override
   Widget build(BuildContext context) {
-
     inputChangeHandler(newCode, id) {
       bool isEmpty = true;
-      setState(() {
-        verificationCode[id] = newCode.text.trim();
-      });
+      verificationCode[id] = newCode.text.trim();
 
       for (int i = 0; i < 6; i++) {
         if (verificationCode[i].isEmpty) {
+          isEmpty = true;
           break;
         } else {
-          isEmpty = true;
+          isEmpty = false;
         }
       }
-      log("$verificationCode // ${verificationCode.length}");
+      if (isEmpty == false) {
+        code = "";
+        for (int i = 0; i < 6; i++) {
+          code.trim();
+          code += verificationCode[i];
+          log("code : $code");
+        }
+      }
 
-      if (isEmpty == true) {
-        widget.sendCodeToFirebase(smsCode: verificationCode);
+      if (code.length == 6) {
+        widget.sendCodeToFirebase(smsCode: code);
       }
     }
 
@@ -52,7 +59,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
               ),
               const Text(
                 "Verify Your Code",
-                style:  TextStyle(
+                style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
@@ -75,30 +82,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  InputBox(
-                      verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler,
-                      id: 01),
-                  InputBox(
-                      verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler,
-                      id: 1),
-                  InputBox(
-                      verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler,
-                      id: 2),
-                  InputBox(
-                      verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler,
-                      id: 3),
-                  InputBox(
-                      verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler,
-                      id: 4),
-                  InputBox(
-                      verificationCode: verificationCode,
-                      inputChangeHandler: inputChangeHandler,
-                      id: 5),
+                  InputBox(inputChangeHandler: inputChangeHandler, id: 0),
+                  InputBox(inputChangeHandler: inputChangeHandler, id: 1),
+                  InputBox(inputChangeHandler: inputChangeHandler, id: 2),
+                  InputBox(inputChangeHandler: inputChangeHandler, id: 3),
+                  InputBox(inputChangeHandler: inputChangeHandler, id: 4),
+                  InputBox(inputChangeHandler: inputChangeHandler, id: 5),
                 ],
               ),
 
@@ -179,7 +168,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   GestureDetector(
                     child: const Text(
                       "Resend",
-                      style:  TextStyle(
+                      style: TextStyle(
                         color: Colors.deepOrange,
                         decoration: TextDecoration.underline,
                       ),
