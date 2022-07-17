@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'package:userapp/view/components/appbar.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
+import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/toast.dart';
-import 'package:userapp/view/screens/food_detail.dart';
 
 class BagScreen extends StatefulWidget {
   const BagScreen({Key? key}) : super(key: key);
@@ -37,6 +37,7 @@ class _BagScreenState extends State<BagScreen> {
   Widget build(BuildContext context) {
     ToastContext().init(context);
     return Scaffold(
+      bottomNavigationBar: const BottomNavBar(),
       appBar: topAppBar(
         appbarTitle: const Text(
           "Bag",

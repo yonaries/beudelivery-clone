@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/model/bag_item_model.dart';
 import 'package:userapp/view/components/bag/bag_list_builder.dart';
 import 'package:userapp/view/components/toast.dart';

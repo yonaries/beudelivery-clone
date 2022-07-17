@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 
-GestureDetector checkoutButton({required String title}) {
+GestureDetector commonButton({required String title}) {
   return GestureDetector(
     onTap: () {
       // show success message
     },
     child: Center(
       child: Container(
-        width: 350,
-        height: 60,
+        width: 300,
+        height: 50,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.orange, borderRadius: BorderRadius.circular(30)),
+          gradient: const LinearGradient(
+            colors: [Colors.deepOrange, Color.fromARGB(255, 255, 166, 64)],
+          ),
+          borderRadius: BorderRadius.circular(30),
+        ),
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,

@@ -27,7 +27,7 @@ paymentProviderButtons() {
             ),
           ),
 
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
 
@@ -51,7 +51,7 @@ paymentProviderButtons() {
             ),
           ),
 
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
 
@@ -83,7 +83,7 @@ paymentProviderButtons() {
             ),
           ),
 
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
 
