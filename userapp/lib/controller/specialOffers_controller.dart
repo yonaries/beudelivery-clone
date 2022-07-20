@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:userapp/model/similar_food_model.dart';
-import 'package:userapp/view/components/food_datails/similar_foods.dart';
+import 'package:userapp/model/special_offers_dataModel.dart';
 
-class SimilarFoodsController extends ChangeNotifier {
-  final List<SimilarFoodModel> _similarFoodList = [];
+class SpecialOffersController extends ChangeNotifier {
+  final List<SpecialOfferModel> _foodList = [];
   bool _isLoaded = false;
 
-  List<SimilarFoodModel> get similarFoodList => _similarFoodList;
+  List<SpecialOfferModel> get foodList => _foodList;
   bool get isLoaded => _isLoaded;
 
   getData() async {
     final data = await fetchSimilars();
-    _similarFoodList.clear();
-    _similarFoodList.addAll(data);
+    _foodList.clear();
+    _foodList.addAll(data);
     _isLoaded = true;
     notifyListeners();
   }
 
-  Future<List<SimilarFoodModel>> fetchSimilars() async {
+  Future<List<SpecialOfferModel>> fetchSimilars() async {
     await Future.delayed(const Duration(seconds: 5));
 
     return [
-      SimilarFoodModel(
+      SpecialOfferModel(
           image: "lib/assets/special/chillyBurger.jpg",
           itemName: "Boss Special Cheese",
           itemprice: 375,
@@ -29,7 +28,7 @@ class SimilarFoodsController extends ChangeNotifier {
           restaurant: "Boss Burger",
           description: "Food Description",
           itemSize: "small"),
-      SimilarFoodModel(
+      SpecialOfferModel(
           image: "lib/assets/special/kitfo.png",
           itemName: "Special Kitfo",
           itemprice: 355,
@@ -37,7 +36,7 @@ class SimilarFoodsController extends ChangeNotifier {
           restaurant: "Bete Maed",
           description: "Food Description",
           itemSize: "small"),
-      SimilarFoodModel(
+      SpecialOfferModel(
           image: "lib/assets/special/Dulet.png",
           itemName: "Dulet",
           itemprice: 100,
@@ -45,7 +44,7 @@ class SimilarFoodsController extends ChangeNotifier {
           restaurant: "Bete Maed",
           description: "Food Description",
           itemSize: "small"),
-      SimilarFoodModel(
+      SpecialOfferModel(
           image: "lib/assets/special/boss-coca.jpg",
           itemName: "Burger + Free Coke",
           itemprice: 254,
@@ -53,7 +52,7 @@ class SimilarFoodsController extends ChangeNotifier {
           restaurant: "Boss Burger",
           description: "Food Description",
           itemSize: "small"),
-      SimilarFoodModel(
+      SpecialOfferModel(
           image: "lib/assets/special/devine.webp",
           itemName: "Burger + Free Coke",
           itemprice: 189,
@@ -63,8 +62,4 @@ class SimilarFoodsController extends ChangeNotifier {
           itemSize: "small"),
     ];
   }
-}
-
-Widget similarFoodsContainer(context) {
-  return similarFoods(context);
 }

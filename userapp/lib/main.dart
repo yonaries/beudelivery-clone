@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:userapp/controller/ad_controller.dart';
 import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
+import 'package:userapp/controller/restaurant_controller.dart';
+import 'package:userapp/controller/similar_foods_controller.dart';
+import 'package:userapp/controller/specialOffers_controller.dart';
 import 'package:userapp/view/screens/navbar.dart';
 import 'controller/coupons_controller.dart';
+import 'controller/localFavorites_controller.dart';
 import 'controller/order_page_controller.dart';
 import 'controller/user_profile_controller.dart';
 import 'firebase_options.dart';
@@ -24,6 +29,11 @@ void main() async {
         ChangeNotifierProvider(create: (_) => NotificationsController()),
         ChangeNotifierProvider(create: (_) => UserProfileController()),
         ChangeNotifierProvider(create: (_) => CouponsController()),
+        ChangeNotifierProvider(create: (_) => AdController()),
+        ChangeNotifierProvider(create: (_) => SimilarFoodsController()),
+        ChangeNotifierProvider(create: (_) => SpecialOffersController()),
+        ChangeNotifierProvider(create: (_) => LocalFavoritesController()),
+        ChangeNotifierProvider(create: (_) => RestaurantsController()),
       ],
       child: const MyApp(),
     ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 import 'package:userapp/controller/bag_items_controller.dart';
 import 'package:userapp/controller/similar_foods_controller.dart';
@@ -48,6 +50,12 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
   }
 
   @override
+  void initState() {
+    Provider.of<SimilarFoodsController>(context, listen: false).getData();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ToastContext().init(context);
     final currentWidth = MediaQuery.of(context).size.width;
@@ -83,8 +91,16 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
       restaurant = food.restaurant;
       itemSize = food.itemSize;
     }
+    // Transpaarent Status Bar
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -103,14 +119,14 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                 ),
 
                 //
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: currentWidth * 0.05),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // name and price
-                      Column(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // name and price
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: currentWidth * 0.05),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           OrderDetailOrderComponent(
@@ -208,14 +224,17 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                           ),
                         ],
                       ),
+                    ),
 
-                      // Render list of similar food component
-                      similarFoodsContainer(context),
-                      const SizedBox(
-                        height: 50,
-                      )
-                    ],
-                  ),
+                    // Render list of similar food component
+                    similarFoodsContainer(context),
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 40,
                 ),
               ],
             ),
@@ -223,8 +242,10 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
 
           // Add to bag button
           Positioned(
-            bottom: 10,
+            bottom: 0,
             child: Container(
+              color: Colors.white,
+              height: 100,
               alignment: Alignment.bottomCenter,
               width: currentWidth,
               child: GestureDetector(
@@ -243,6 +264,7 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                   bool addToCart = true;
                   for (var item in cartList) {
                     {
+                      // ignore: todo
                       //TODO: itemName should be changed to itemId, b/c multiple restaurant might have the same food with same name
                       if (item.itemName == newItem.itemName) {
                         addToCart = false;
@@ -261,32 +283,35 @@ class _FoodDetailScreenState extends State<FoodDetailScreen> {
                   }
                 },
                 child: Center(
-                  child: Container(
-                    width: 300,
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          Colors.deepOrange,
-                          Color.fromARGB(255, 255, 166, 64)
-                        ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Container(
+                      width: currentWidth,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Colors.deepOrange,
+                            Color.fromARGB(255, 255, 166, 64)
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const Text(
-                      "Add To Bag",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                      child: const Text(
+                        "Add To Bag",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

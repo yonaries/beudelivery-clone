@@ -41,12 +41,12 @@ class _BagItemState extends State<BagItem> {
       height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(204, 196, 196, 0.6),
+            color: const Color.fromRGBO(204, 196, 196, 0.6).withOpacity(0.1),
             blurRadius: 4,
             spreadRadius: 1,
-            offset: Offset(2, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -73,15 +73,16 @@ class _BagItemState extends State<BagItem> {
           verticalDirection: VerticalDirection.up,
           children: [
             Container(
-              width: 110,
-              height: double.infinity,
+              padding: const EdgeInsets.all(10),
+              width: 120,
+              height: 120,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: const BorderRadius.horizontal(
                     left: const Radius.circular(12)),
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
                   widget.image,
                   fit: BoxFit.cover,

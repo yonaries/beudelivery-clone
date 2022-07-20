@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:userapp/view/screens/favorites.dart';
 import 'package:userapp/view/screens/offers.dart';
 
 class SettingsController {
@@ -16,17 +17,17 @@ class SettingsController {
     } else if (title == "Coupons") {
       // ignore: todo
       //TODO send to offers screen
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const CouponsScreen();
-      }));
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const CouponsScreen()),
+      );
       log(title);
     }
     if (title == "Favorites") {
       // ignore: todo
       //TODO send to Promo Codes
-      // Navigator.push(context, MaterialPageRoute(builder: (context) {
-      //   return
-      // }));
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const FavoritesScreen()),
+      );
       log(title);
     }
     if (title == "Rewards") {

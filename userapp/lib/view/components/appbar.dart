@@ -36,3 +36,34 @@ AppBar topAppBar({required Widget appbarTitle, required context}) {
     title: SizedBox(child: appbarTitle),
   );
 }
+
+//secondary AppBar
+AppBar secondAppBar(BuildContext context, String title) {
+  return AppBar(
+    toolbarHeight: 60,
+    systemOverlayStyle: const SystemUiOverlayStyle(
+      statusBarColor: Colors.deepOrange,
+      statusBarIconBrightness: Brightness.light,
+    ),
+    leading: GestureDetector(
+      onTap: () {
+        Navigator.pop(context, true);
+      },
+      child: Icon(
+        Icons.arrow_back_ios_outlined,
+        color: Theme.of(context).primaryColor,
+        size: 20,
+      ),
+    ),
+    backgroundColor: Colors.deepOrange,
+    elevation: 0,
+    title: Text(
+      title,
+      style: TextStyle(
+        color: Theme.of(context).primaryColor,
+        fontSize: 22,
+      ),
+    ),
+    centerTitle: true,
+  );
+}

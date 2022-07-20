@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 Padding searchBar(double currentWidth) {
+  final _searchInputController = TextEditingController();
+
   return Padding(
     padding: const EdgeInsets.only(left: 24, right: 24, top: 10),
     child: Container(
@@ -15,8 +17,9 @@ Padding searchBar(double currentWidth) {
           const Icon(Icons.search),
           SizedBox(
             width: currentWidth / 1.5,
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: _searchInputController,
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: "Search for Items, Restaurants",
                 hintStyle: TextStyle(fontSize: 16),

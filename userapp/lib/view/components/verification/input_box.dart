@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -48,7 +46,8 @@ class _InputBoxState extends State<InputBox> {
             FocusScope.of(context).nextFocus();
             setState(() {
               isChanged = true;
-              widget.inputChangeHandler(_verificationNumberController, widget.id);
+              widget.inputChangeHandler(
+                  _verificationNumberController, widget.id);
             });
           }
         },

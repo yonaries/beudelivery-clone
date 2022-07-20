@@ -16,12 +16,12 @@ class RestaurantModel {
     required this.retaurants,
   });
 
-  List<Retaurant> retaurants;
+  List<Restaurant> retaurants;
 
   factory RestaurantModel.fromJson(Map<String, dynamic> json) =>
       RestaurantModel(
-        retaurants: List<Retaurant>.from(
-            json["retaurants"].map((x) => Retaurant.fromJson(x))),
+        retaurants: List<Restaurant>.from(
+            json["retaurants"].map((x) => Restaurant.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,8 +29,8 @@ class RestaurantModel {
       };
 }
 
-class Retaurant {
-  Retaurant({
+class Restaurant {
+  Restaurant({
     required this.restaurant,
     required this.location,
     required this.description,
@@ -46,7 +46,7 @@ class Retaurant {
   String phone;
   MapLocation mapLocation;
 
-  factory Retaurant.fromJson(Map<String, dynamic> json) => Retaurant(
+  factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
         restaurant: json["restaurant"],
         location: json["location"],
         description: json["description"],

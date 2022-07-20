@@ -3,6 +3,8 @@ import 'package:userapp/view/components/order_details/order_detail_orders_compon
 import 'package:userapp/view/components/order_details/order_detail_totals_section.dart';
 import 'package:userapp/view/components/order_details/order_details_info_section.dart';
 
+import '../components/appbar.dart';
+
 class OrderDetailScreen extends StatefulWidget {
   const OrderDetailScreen({Key? key}) : super(key: key);
 
@@ -14,29 +16,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Icon(
-            Icons.arrow_back_ios_outlined,
-            color: Theme.of(context).primaryColor,
-            size: 22,
-          ),
-        ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        elevation: 0,
-        title: Text(
-          "Order Details",
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 25,
-          ),
-        ),
-        centerTitle: true,
-      ),
+      appBar: secondAppBar(context, "Order Details"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: SingleChildScrollView(

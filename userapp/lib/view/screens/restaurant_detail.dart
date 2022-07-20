@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:userapp/controller/restaurant_menu_controller.dart';
-import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/restaurant_detail/restaurant_image.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
@@ -21,8 +21,16 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final currentWidth = MediaQuery.of(context).size.width;
+
+    // Transpaarent Status Bar
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
+      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:userapp/controller/ad_controller.dart';
+import 'package:userapp/controller/restaurant_controller.dart';
+import 'package:userapp/controller/specialOffers_controller.dart';
 import 'package:userapp/view/components/home/ads.dart';
 import 'package:userapp/view/components/home/searchbar.dart';
 import 'package:userapp/view/components/home/tabs/foods.dart';
 import 'package:userapp/view/components/home/hometabs.dart';
 import 'package:userapp/view/components/appbar.dart';
 import 'package:userapp/view/components/home/tabs/restaurants.dart';
+
+import '../../controller/localFavorites_controller.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -14,6 +20,15 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
+  @override
+  void initState() {
+    Provider.of<AdController>(context, listen: false).getData();
+    Provider.of<SpecialOffersController>(context, listen: false).getData();
+    Provider.of<LocalFavoritesController>(context, listen: false).getData();
+    Provider.of<RestaurantsController>(context, listen: false).getMenu();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // current screen ratio
@@ -35,7 +50,7 @@ class _HomepageState extends State<Homepage> with TickerProviderStateMixin {
                 delegate: SliverChildListDelegate(
                   [
                     searchBar(currentWidth),
-                    adBanner(currentHeight),
+                    adBanner(currentHeight, context),
                     tabBars(),
                   ],
                 ),

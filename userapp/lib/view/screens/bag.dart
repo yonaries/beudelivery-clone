@@ -37,7 +37,6 @@ class _BagScreenState extends State<BagScreen> {
   Widget build(BuildContext context) {
     ToastContext().init(context);
     return Scaffold(
-      bottomNavigationBar: const BottomNavBar(),
       appBar: topAppBar(
         appbarTitle: const Text(
           "Bag",
