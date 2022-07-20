@@ -18,6 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _phoneController = TextEditingController();
   final _nameController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
+  // ignore: prefer_typing_uninitialized_variables
   var verificationId;
 
   @override
@@ -161,8 +162,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: _nameController,
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
-                      contentPadding:
-                          const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 10),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
                         borderSide: const BorderSide(color: Colors.black),

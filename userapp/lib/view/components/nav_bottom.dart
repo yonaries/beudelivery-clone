@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:userapp/view/screens/profile.dart';
 
 import '../../controller/navbar_provider.dart';
 

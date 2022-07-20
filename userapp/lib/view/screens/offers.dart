@@ -1,15 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:userapp/controller/coupons_controller.dart';
 import 'package:userapp/controller/refresh_conroller.dart';
-import 'package:userapp/model/customerModel.dart';
-import 'package:userapp/model/demo_offers_model.dart';
-import 'package:userapp/view/components/appbar.dart';
-import 'package:userapp/view/components/nav_bottom.dart';
 
 import '../components/offers/coupon_tile.dart';
 

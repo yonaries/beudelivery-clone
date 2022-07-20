@@ -7,7 +7,6 @@ import 'package:userapp/model/local_favorites_model.dart';
 import 'package:userapp/model/restaurant_menu_model.dart';
 import 'package:userapp/model/similar_food_model.dart';
 import 'package:userapp/model/special_offers_dataModel.dart';
-import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/components/order_details/order_detail_orders_component.dart';
 import 'package:userapp/view/components/food_datails/food_image.dart';
 import 'package:userapp/view/components/toast.dart';

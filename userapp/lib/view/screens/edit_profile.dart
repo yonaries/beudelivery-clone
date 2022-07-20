@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:userapp/view/components/nav_bottom.dart';
 
 import '../../controller/user_profile_controller.dart';
 
