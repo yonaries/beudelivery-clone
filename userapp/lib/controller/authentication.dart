@@ -7,6 +7,8 @@ import 'package:userapp/view/screens/navbar.dart';
 import 'package:userapp/view/screens/verification.dart';
 
 FirebaseAuth auth = FirebaseAuth.instance;
+CollectionReference customers =
+    FirebaseFirestore.instance.collection('customers');
 
 class SignUp {
   final context;
@@ -62,6 +64,7 @@ class SignUp {
 
   Future sendCodeToFirebase({required String smsCode}) async {
     log("Code sented to firebase");
+    checkIfUserIsRegistered();
     if (verificationId != null) {
       var credential = PhoneAuthProvider.credential(
           verificationId: verificationId, smsCode: smsCode);
@@ -88,14 +91,32 @@ class SignUp {
     }
   }
 
+  checkIfUserIsRegistered() {
+    auth.authStateChanges().listen((User? user) {
+      print("user?.uid");
+      print(user?.uid);
+      if (user != null) {
+        print(user.uid);
+      }
+    });
+  }
+
   registerUserData({required Customer customer}) async {
-    CollectionReference customers =
-        FirebaseFirestore.instance.collection('customers');
     await customers.add({
       'customerName': customer.customerName,
       'phoneNumber': "+251${customer.phoneNumber}",
     });
   }
+}
+
+checkIfUserIsRegistered() async {
+  await auth.authStateChanges().listen((User? user) {
+    print("user?.uid");
+    print(user?.uid);
+    if (user != null) {
+      print(user.uid);
+    }
+  });
 }
 
 class SignIn {
@@ -112,6 +133,7 @@ class SignIn {
   });
 
   Future signInUser() async {
+    await checkIfUserIsRegistered();
     await auth.verifyPhoneNumber(
       phoneNumber: '+251${phoneController.text.trim()}',
       verificationCompleted: (PhoneAuthCredential credential) async {
@@ -148,6 +170,7 @@ class SignIn {
   }
 
   Future sendCodeToFirebase({required String smsCode}) async {
+    log("code sent back");
     if (verificationId != null) {
       var credential = PhoneAuthProvider.credential(
           verificationId: verificationId, smsCode: smsCode);

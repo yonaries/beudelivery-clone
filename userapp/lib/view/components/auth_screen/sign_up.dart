@@ -1,12 +1,8 @@
-import 'dart:developer';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:userapp/controller/authentication.dart';
-import 'package:userapp/view/screens/navbar.dart';
-import 'package:userapp/model/customer_model.dart';
-import 'package:userapp/view/screens/verification.dart';
+import 'package:userapp/view/components/auth_screen/sign_in.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -228,10 +224,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
 
+              SizedBox(
+                height: 10,
+              ),
               // it user is already signed up
-              // Row(
-              //   children: [],
-              // ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already registered? "),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignInScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Sign in",
+                      style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

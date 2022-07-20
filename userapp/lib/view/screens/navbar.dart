@@ -7,6 +7,7 @@ import 'package:userapp/view/components/nav_bottom.dart';
 import 'package:userapp/view/screens/bag.dart';
 import 'package:userapp/view/screens/homepage.dart';
 import 'package:userapp/view/screens/profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //* states
 class Navbar extends StatefulWidget {
