@@ -49,15 +49,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
         log("Error finished");
       },
       codeSent: (String verificationId, int? resendToken) async {
-        // Update the UI - wait for the user to enter the SMS code
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => VerificationScreen(
-                    sendCodeToFirebase: sendCodeToFirebase)));
         setState(() {
           this.verificationId = verificationId;
         });
+        // Update the UI - wait for the user to enter the SMS code
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                VerificationScreen(sendCodeToFirebase: sendCodeToFirebase),
+          ),
+        );
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         log("Timeout");
@@ -97,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         FirebaseFirestore.instance.collection('customers');
     await customers.add({
       'customerName': customer.customerName,
-      'phoneNumber': customer.phoneNumber,
+      'phoneNumber': "+251${customer.phoneNumber}",
     });
   }
 
