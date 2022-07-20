@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:userapp/controller/authentication.dart';
 import 'package:userapp/view/screens/navbar.dart';
 import 'package:userapp/model/customer_model.dart';
 import 'package:userapp/view/screens/verification.dart';
@@ -27,83 +28,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  Future registerUser() async {
-    await auth.verifyPhoneNumber(
-      phoneNumber: '+251${_phoneController.text.trim()}',
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        log("completed");
-        // Sign the user in (or link) with the auto-generated credential
-        await auth.signInWithCredential(credential);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const Navbar()),
-        );
-      },
-      verificationFailed: (FirebaseAuthException e) {
-        if (e.code == 'invalid-phone-number') {
-          log('The provided phone number is not valid.');
-        }
-        log("Error started");
-        log(e.toString());
-        log("Error finished");
-      },
-      codeSent: (String verificationId, int? resendToken) async {
-        setState(() {
-          this.verificationId = verificationId;
-        });
-        // Update the UI - wait for the user to enter the SMS code
-        await Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                VerificationScreen(sendCodeToFirebase: sendCodeToFirebase),
-          ),
-        );
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {
-        log("Timeout");
-      },
-    );
-  }
-
-  Future sendCodeToFirebase({required String smsCode}) async {
-    if (verificationId != null) {
-      var credential = PhoneAuthProvider.credential(
-          verificationId: verificationId, smsCode: smsCode);
-
-      await auth
-          .signInWithCredential(credential)
-          .then((value) {})
-          .whenComplete(() {})
-          .onError((error, stackTrace) {});
-
-      // Registering user data to firestore
-      registerUserData(
-        customer: Customer(
-          customerName: _nameController.text.trim(),
-          phoneNumber: _phoneController.text.trim(),
-        ),
-      );
-
-      // Navigating to the homepage
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Navbar()),
-      );
-    }
-  }
-
-  registerUserData({required Customer customer}) async {
-    CollectionReference customers =
-        FirebaseFirestore.instance.collection('customers');
-    await customers.add({
-      'customerName': customer.customerName,
-      'phoneNumber': "+251${customer.phoneNumber}",
+  verificationIdStateSetter(newVerificationId) {
+    setState(() {
+      verificationId = newVerificationId;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    var signUp = SignUp(
+      context: context,
+      phoneController: _phoneController,
+      nameController: _nameController,
+      stateSetter: verificationIdStateSetter,
+      verificationId: verificationId,
+    );
     final currentHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
@@ -262,7 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               GestureDetector(
                 onTap: () {
                   // show success message
-                  registerUser();
+                  signUp.registerUser();
                 },
                 child: Center(
                   child: Container(

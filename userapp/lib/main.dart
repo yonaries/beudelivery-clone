@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: SignUpScreen(),
+      home: const SignUpScreen(),
     );
   }
 }

@@ -1,4 +1,10 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:userapp/controller/authentication.dart';
+import 'package:userapp/view/screens/navbar.dart';
+import 'package:userapp/view/screens/verification.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -9,6 +15,14 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final _phoneController = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  var verificationId;
+
+  verificationIdStateSetter(newVerificationId) {
+    setState(() {
+      verificationId = newVerificationId;
+    });
+  }
 
   @override
   void dispose() {
@@ -18,6 +32,12 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var signIn = SignIn(
+      context: context,
+      phoneController: _phoneController,
+      stateSetter: verificationIdStateSetter,
+      verificationId: verificationId,
+    );
     final currentHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
@@ -48,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
               const Text(
                 "Enter Your phone number to signup or signin toyour account.",
                 textAlign: TextAlign.center,
-                style:  TextStyle(
+                style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
@@ -68,7 +88,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     const Text(
                       "+251",
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontSize: 22,
                         color: Colors.grey,
                       ),
@@ -82,7 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: const TextStyle(fontSize: 22),
                         decoration: const InputDecoration(
                           contentPadding:
-                               EdgeInsets.only(top: 10, bottom: 10, left: 20),
+                              EdgeInsets.only(top: 10, bottom: 10, left: 20),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.transparent,
@@ -108,7 +128,7 @@ class _SignInScreenState extends State<SignInScreen> {
               // Sign in button
               GestureDetector(
                 onTap: () {
-                  // show success message
+                  signIn.signInUser();
                 },
                 child: Center(
                   child: Container(
