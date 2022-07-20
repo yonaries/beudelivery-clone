@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:userapp/controller/authentication.dart';
+import 'package:userapp/view/components/auth_screen/sign_up.dart';
 import 'package:userapp/view/screens/navbar.dart';
 import 'package:userapp/view/components/auth_screen/sign_in.dart';
 
@@ -16,8 +18,7 @@ class AuthScreen extends StatelessWidget {
             // Already signed in
             return const Navbar();
           } else {
-            
-            return const SignInScreen();
+            return const SignUpScreen();
           }
         },
       ),
