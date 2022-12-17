@@ -3,13 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:userapp/controller/ad_controller.dart';
 import 'package:userapp/controller/navbar_provider.dart';
 import 'package:userapp/controller/notifications_controller.dart';
-import 'package:userapp/controller/restaurant_controller.dart';
-import 'package:userapp/controller/similar_foods_controller.dart';
-import 'package:userapp/controller/specialOffers_controller.dart';
-import 'package:userapp/view/screens/navbar.dart';
+import 'package:userapp/view/screens/auth_checker.dart';
 import 'controller/coupons_controller.dart';
 import 'controller/localFavorites_controller.dart';
 import 'controller/order_page_controller.dart';
+import 'controller/restaurant_controller.dart';
+import 'controller/similar_foods_controller.dart';
+import 'controller/specialOffers_controller.dart';
 import 'controller/user_profile_controller.dart';
 import 'firebase_options.dart';
 
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
-      home: const Navbar(),
+      home: const AuthScreen(),
     );
   }
 }
